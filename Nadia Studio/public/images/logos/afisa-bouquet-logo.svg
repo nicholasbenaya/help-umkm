@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 130" width="100%" height="100%">
+  <defs>
+    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D9777F"/>
+      <stop offset="50%" stop-color="#EAA6AC"/>
+      <stop offset="100%" stop-color="#C25A64"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7B8D6C"/>
+      <stop offset="100%" stop-color="#556647"/>
+    </linearGradient>
+  </defs>
+  <!-- Floral Bouquet Icon -->
+  <g transform="translate(15, 15)">
+    <circle cx="50" cy="50" r="46" fill="#FFF5F5" stroke="url(#roseGrad)" stroke-width="1.5"/>
+    <!-- Rose petal shapes -->
+    <path d="M50 28 C42 22, 34 32, 40 40 C34 46, 42 56, 50 50 C58 56, 66 46, 60 40 C66 32, 58 22, 50 28 Z" fill="url(#roseGrad)" opacity="0.95"/>
+    <circle cx="50" cy="38" r="6" fill="#FFF" opacity="0.7"/>
+    <!-- Leaves -->
+    <path d="M36 46 C26 44, 24 54, 34 52 Z" fill="url(#leafGrad)"/>
+    <path d="M64 46 C74 44, 76 54, 66 52 Z" fill="url(#leafGrad)"/>
+    <!-- Bouquet wrap stem lines -->
+    <path d="M42 56 L50 78 L58 56" stroke="#B37D71" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Ribbon tie -->
+    <path d="M44 64 Q50 67 56 64 M47 65 L43 74 M53 65 L57 74" stroke="url(#roseGrad)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- Typography -->
+  <g transform="translate(130, 22)">
+    <text x="0" y="44" font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif" font-size="34" font-weight="700" letter-spacing="3" fill="#2E2325">AFISA BOUQUET</text>
+    <text x="3" y="70" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="13" font-weight="500" letter-spacing="4" fill="#9C6B75">HANDCRAFTED FLORIST &amp; GIFTS</text>
+    <text x="3" y="88" font-family="'Playfair Display', Georgia, serif" font-size="13" font-style="italic" font-weight="500" letter-spacing="1.5" fill="#D9777F">by Nadia &amp; Afisa</text>
+  </g>
+</svg>

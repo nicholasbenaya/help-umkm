@@ -1,0 +1,429 @@
+{
+  "settings": {
+    "studioName": "Nadia Studio",
+    "tagline": "Floral Artistry & Professional Makeup Studio",
+    "whatsappNumber": "6282154309113",
+    "whatsappDisplay": "0821-5430-9113",
+    "contactName": "Nadia",
+    "city": "Samarinda, Kalimantan Timur",
+    "address": "Jl. Revolusi, arah Gg. Kasih (samping Dama Parfume), Samarinda",
+    "instagramAfisa": "https://www.instagram.com/afisabouquet/",
+    "instagramNadia": "https://www.instagram.com/nadiaanfh/",
+    "announcement": "Pemesanan Buket Wisuda & Booking MUA Samarinda kini dibuka! Dapatkan potongan untuk Paket Kombo.",
+    "isAnnouncementActive": true,
+    "adminPin": "123456"
+  },
+  "bouquets": [
+    {
+      "id": "bq-1",
+      "title": "Elegance Rose Satin Bouquet",
+      "category": "satin",
+      "categoryLabel": "Bunga Satin",
+      "price": "Rp 65.000",
+      "numericPrice": 65000,
+      "tag": "Best Seller",
+      "status": "available",
+      "image": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=1000&q=80",
+      "description": "Rangkaian mawar satin handmade awet selamanya, dilapisi wrapping premium matte warna blush pink dengan aksen gold foil. Ideal untuk wisuda atau anniversary.",
+      "highlights": [
+        "Awet bertahun-tahun",
+        "Wrapping tebal anti-lecek",
+        "Free kartu ucapan"
+      ],
+      "featured": true,
+      "views": 142,
+      "waClicks": 28,
+      "createdAt": "2026-09-01T10:00:00Z"
+    },
+    {
+      "id": "bq-2",
+      "title": "Graduation Teddy & Flower Deluxe",
+      "category": "wisuda",
+      "categoryLabel": "Wisuda & Sempro",
+      "price": "Rp 95.000",
+      "numericPrice": 95000,
+      "tag": "Favorit Wisuda",
+      "status": "available",
+      "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1000&q=80",
+      "description": "Buket wisuda spesial dilengkapi boneka wisuda bertoga, bunga satin premium, serta selempang nama kustom. Hadiah berkesan untuk sahabat atau pasangan.",
+      "highlights": [
+        "Boneka toga custom nama",
+        "Free kartu ucapan",
+        "Bisa request warna toga"
+      ],
+      "featured": true,
+      "views": 210,
+      "waClicks": 47,
+      "createdAt": "2026-09-02T10:00:00Z"
+    },
+    {
+      "id": "bq-3",
+      "title": "Luxury Butterfly Money Bouquet",
+      "category": "money",
+      "categoryLabel": "Money Bouquet",
+      "price": "Jasa Rp 75.000 (+ isi)",
+      "numericPrice": 75000,
+      "tag": "Trending",
+      "status": "available",
+      "image": "https://images.unsplash.com/photo-1599730198590-b5305106d6e1?auto=format&fit=crop&w=1000&q=80",
+      "description": "Buket uang asli (nominal bebas request) disusun presisi tanpa merusak atau merekatkan lem pada uang kertas. Dipercantik ornamen kupu-kupu & LED.",
+      "highlights": [
+        "Uang 100% aman tanpa lem/staples",
+        "Bisa tambah fairy light LED",
+        "Request 10-50+ lembar"
+      ],
+      "featured": true,
+      "views": 185,
+      "waClicks": 39,
+      "createdAt": "2026-09-03T10:00:00Z"
+    },
+    {
+      "id": "bq-4",
+      "title": "Sweet Tooth Ferrero & Pocky Bouquet",
+      "category": "snack",
+      "categoryLabel": "Snack & Chocolate",
+      "price": "Rp 55.000",
+      "numericPrice": 55000,
+      "tag": "Best Seller",
+      "status": "available",
+      "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=1000&q=80",
+      "description": "Kombinasi cokelat Ferrero Rocher, biskuit Pocky, dan aneka snack favorit yang disusun estetik dengan wrapping tema pastel minimalis.",
+      "highlights": [
+        "Snack fresh & exp panjang",
+        "Bisa custom snack favorit",
+        "Free topper ucapan"
+      ],
+      "featured": false,
+      "views": 98,
+      "waClicks": 16,
+      "createdAt": "2026-09-04T10:00:00Z"
+    },
+    {
+      "id": "bq-5",
+      "title": "Fluffy Pipe Cleaner Daisy Bouquet",
+      "category": "satin",
+      "categoryLabel": "Bunga Kawat Bulu",
+      "price": "Rp 45.000",
+      "numericPrice": 45000,
+      "tag": "Unik",
+      "status": "available",
+      "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1000&q=80",
+      "description": "Bunga kawat bulu (pipe cleaner) bentuk daisy & tulip warna pastel. Menggemaskan, estetik, dan abadi tidak akan pernah layu.",
+      "highlights": [
+        "100% Handcrafted",
+        "Warna pastel menggemaskan",
+        "Awet seumur hidup"
+      ],
+      "featured": false,
+      "views": 112,
+      "waClicks": 21,
+      "createdAt": "2026-09-05T10:00:00Z"
+    },
+    {
+      "id": "bq-6",
+      "title": "Hampers Gift Box & Dama Parfume",
+      "category": "gift",
+      "categoryLabel": "Gift Box & Parfume",
+      "price": "Rp 120.000",
+      "numericPrice": 120000,
+      "tag": "Eksklusif",
+      "status": "available",
+      "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80",
+      "description": "Kotak kado hardbox premium berisi buket mini satin, sebotol Dama Parfume aroma mewah, cokelat premium, dan greeting card wax seal.",
+      "highlights": [
+        "Include parfum wangi elegan",
+        "Hardbox pita premium",
+        "Siap langsung dihadiahkan"
+      ],
+      "featured": true,
+      "views": 154,
+      "waClicks": 32,
+      "createdAt": "2026-09-06T10:00:00Z"
+    }
+  ],
+  "makeupLooks": [
+    {
+      "id": "mua-1",
+      "title": "Soft Glam Graduation",
+      "category": "wisuda",
+      "categoryLabel": "Wisuda & Sempro",
+      "image": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1000&q=80",
+      "description": "Riasan glowing natural dengan eye makeup peach-champagne lembut. Tahan 12+ jam untuk sesi foto wisuda indoor dan outdoor.",
+      "tag": "Favorit Wisuda",
+      "featured": true,
+      "waClicks": 42
+    },
+    {
+      "id": "mua-2",
+      "title": "Radiant Velvet Engagement",
+      "category": "engagement",
+      "categoryLabel": "Lamaran & Prewedding",
+      "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80",
+      "description": "Complexion velvet halus dengan teknik baking anti-crack, bulu mata 3D bertingkat alami, dan lipstik nude mauve elegan.",
+      "tag": "Best Seller",
+      "featured": true,
+      "waClicks": 38
+    },
+    {
+      "id": "mua-3",
+      "title": "Sacred Traditional & Modern Akad",
+      "category": "wedding",
+      "categoryLabel": "Akad & Wedding",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80",
+      "description": "Tampilan sakral nan anggun untuk akad nikah. Dilengkapi penataan hijab/rambut rapi, ronce melati, serta complexion full coverage nyaman.",
+      "tag": "Eksklusif Wedding",
+      "featured": true,
+      "waClicks": 26
+    },
+    {
+      "id": "mua-4",
+      "title": "Editorial Night Party & Bridesmaid",
+      "category": "party",
+      "categoryLabel": "Party & Event",
+      "image": "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1000&q=80",
+      "description": "Riasan glamor dengan shimmer halus dan kontur terdefinisi untuk pesta malam hari, bridesmaid, atau acara formal kenegaraan.",
+      "tag": "Modern Glam",
+      "featured": false,
+      "waClicks": 19
+    }
+  ],
+  "makeupPackages": [
+    {
+      "id": "pkg-1",
+      "name": "Graduation / Wisuda Package",
+      "badge": "Paling Populer",
+      "price": "Mulai Rp 200.000",
+      "features": [
+        "Flawless HD Makeup (Tahan 12+ jam)",
+        "Include Hijab Do / Hair Styling",
+        "Free Softlens & Premium False Eyelashes",
+        "Free Mini Touch-up Kit",
+        "Home Service Samarinda & Sekitarnya"
+      ],
+      "isCombo": false,
+      "waClicks": 52
+    },
+    {
+      "id": "pkg-2",
+      "name": "Engagement / Lamaran Package",
+      "badge": "Rekomendasi",
+      "price": "Mulai Rp 350.000",
+      "features": [
+        "Complexion Luxury Glowing Anti-Crack",
+        "High-Definition Contour & Shading",
+        "Hairdo / Hijab Styling Bertekstur Modern",
+        "Free Pemasangan Headpiece / Aksesoris",
+        "Full Touch-up Kit & Konsultasi Look"
+      ],
+      "isCombo": false,
+      "waClicks": 34
+    },
+    {
+      "id": "pkg-3",
+      "name": "Akad Nikah / Wedding Package",
+      "badge": "Paket Eksklusif",
+      "price": "Konsultasi via WA",
+      "features": [
+        "Pangling & Flawless Full Coverage",
+        "Skin Prep Premium (Serum & Masker Eksklusif)",
+        "Hairdo / Hijab Pengantin + Ronce Melati",
+        "Pendampingan Touch-up selama acara",
+        "Free Konsultasi Konsep Riasan"
+      ],
+      "isCombo": false,
+      "waClicks": 22
+    },
+    {
+      "id": "pkg-4",
+      "name": "Paket Kombo Wisuda (MUA + Buket)",
+      "badge": "✨ Best Value All-in-One",
+      "price": "Hemat Rp 265.000",
+      "features": [
+        "Makeup Wisuda by Nadia Artistry",
+        "Buket Cantik by Afisa Bouquet",
+        "1x Booking Terkoordinasi Cepat",
+        "Buket Diantar Bersamaan / Diambil Saat Rias",
+        "Lebih Hemat dibanding pesan terpisah"
+      ],
+      "isCombo": true,
+      "waClicks": 68
+    }
+  ],
+  "traffic": [
+    {
+      "id": "tr-1790439898350-dsff",
+      "type": "pageview",
+      "path": "/",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:24:58.350Z"
+    },
+    {
+      "id": "tr-1790439896330-ts5y",
+      "type": "pageview",
+      "path": "/makeup-artist",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:24:56.330Z"
+    },
+    {
+      "id": "tr-1790439894752-g19p",
+      "type": "pageview",
+      "path": "/afisabouquet",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:24:54.752Z"
+    },
+    {
+      "id": "tr-1790439884892-dqqf",
+      "type": "pageview",
+      "path": "/makeup-artist",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:24:44.892Z"
+    },
+    {
+      "id": "tr-1790439884887-tyy4",
+      "type": "pageview",
+      "path": "/makeup-artist",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:24:44.887Z"
+    },
+    {
+      "id": "tr-1790439695754-oijo",
+      "type": "pageview",
+      "path": "/makeup-artist",
+      "referrer": "direct",
+      "meta": {},
+      "timestamp": "2026-09-26T16:21:35.754Z"
+    },
+    {
+      "id": "tr-1790439692889-58oe",
+      "type": "pageview",
+      "path": "/afisabouquet",
+      "referrer": "direct",
+      "meta": {},
+      "timestamp": "2026-09-26T16:21:32.889Z"
+    },
+    {
+      "id": "tr-1790439688670-xa2g",
+      "type": "pageview",
+      "path": "/",
+      "referrer": "direct",
+      "meta": {},
+      "timestamp": "2026-09-26T16:21:28.670Z"
+    },
+    {
+      "id": "tr-1790439674075-v69n",
+      "type": "pageview",
+      "path": "/",
+      "referrer": "direct",
+      "meta": {},
+      "timestamp": "2026-09-26T16:21:14.075Z"
+    },
+    {
+      "id": "tr-1790439664950-mtpi",
+      "type": "pageview",
+      "path": "/",
+      "referrer": "direct",
+      "meta": {},
+      "timestamp": "2026-09-26T16:21:04.950Z"
+    },
+    {
+      "id": "tr-1790439650257-nd1n",
+      "type": "pageview",
+      "path": "/",
+      "referrer": "direct",
+      "meta": {},
+      "timestamp": "2026-09-26T16:20:50.257Z"
+    },
+    {
+      "id": "tr-1790439642353-kb8f",
+      "type": "pageview",
+      "path": "/",
+      "referrer": "direct",
+      "meta": {},
+      "timestamp": "2026-09-26T16:20:42.353Z"
+    },
+    {
+      "id": "tr-1790438730738-hphz",
+      "type": "pageview",
+      "path": "/",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:05:30.738Z"
+    },
+    {
+      "id": "tr-1790438672692-20qc",
+      "type": "pageview",
+      "path": "/makeup-artist",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:04:32.692Z"
+    },
+    {
+      "id": "tr-1790438666439-ry1j",
+      "type": "pageview",
+      "path": "/afisabouquet",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:04:26.439Z"
+    },
+    {
+      "id": "tr-1790438599021-axt7",
+      "type": "pageview",
+      "path": "/makeup-artist",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:03:19.021Z"
+    },
+    {
+      "id": "tr-1790438599015-qia4",
+      "type": "pageview",
+      "path": "/makeup-artist",
+      "referrer": "internal",
+      "meta": {},
+      "timestamp": "2026-09-26T16:03:19.015Z"
+    },
+    {
+      "id": "tr-1",
+      "type": "pageview",
+      "path": "/",
+      "referrer": "direct",
+      "timestamp": "2026-09-26T08:15:00Z"
+    },
+    {
+      "id": "tr-2",
+      "type": "pageview",
+      "path": "/afisabouquet",
+      "referrer": "instagram",
+      "timestamp": "2026-09-26T09:20:00Z"
+    },
+    {
+      "id": "tr-3",
+      "type": "whatsapp_click",
+      "path": "/afisabouquet",
+      "meta": {
+        "item": "Elegance Rose Satin Bouquet"
+      },
+      "timestamp": "2026-09-26T09:25:00Z"
+    },
+    {
+      "id": "tr-4",
+      "type": "pageview",
+      "path": "/makeup-artist",
+      "referrer": "instagram",
+      "timestamp": "2026-09-26T10:10:00Z"
+    },
+    {
+      "id": "tr-5",
+      "type": "whatsapp_click",
+      "path": "/makeup-artist",
+      "meta": {
+        "item": "Paket Kombo Wisuda (MUA + Buket)"
+      },
+      "timestamp": "2026-09-26T10:15:00Z"
+    }
+  ]
+}

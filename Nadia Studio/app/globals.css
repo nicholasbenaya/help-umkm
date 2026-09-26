@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --apple-bg: #F5F5F7;
+  --apple-dark: #1D1D1F;
+  --apple-muted: #86868B;
+  --apple-border: #E5E5EA;
+  --apple-blue: #0071E3;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #1D1D1F;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Apple-style Frosted Glass Navigation */
+.apple-glass {
+  background-color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.apple-glass-dark {
+  background-color: rgba(29, 29, 31, 0.88);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Hairline dividers & cards */
+.apple-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E5EA;
+  border-radius: 18px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+/* Subtle Apple link styling */
+.apple-link {
+  color: #0071E3;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.apple-link:hover {
+  text-decoration: underline;
+}
+
+/* Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D2D2D7;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #86868B;
+}

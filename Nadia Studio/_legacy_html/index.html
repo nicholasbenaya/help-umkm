@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nadia Collective | Afisa Bouquet & Nadia Artistry MUA Samarinda</title>
+  <meta name="description" content="Portal resmi Nadia Collective. Temukan rangkaian buket handmade eksklusif dari Afisa Bouquet (by Nadia & Afisa) dan jasa makeup profesional dari Nadia Artistry di Samarinda.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logos/nadia-collective-logo.svg">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#C5A059',
+              goldLight: '#E8D8C8',
+              rose: '#D9777F',
+              roseLight: '#FDECEF',
+              dark: '#1E1B18',
+              cream: '#FAF8F5'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#FAF8F5] text-stone-800 antialiased selection:bg-amber-100 selection:text-amber-900">
+
+  <!-- TOP BAR NOTIFICATION -->
+  <div class="bg-stone-900 text-stone-200 text-xs py-2 px-4 text-center tracking-wider flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span>✨ <strong>Promo Bundling Wisuda:</strong> Booking Makeup + Buket hemat hingga 15%!</span>
+    <a href="javascript:void(0)" data-wa-type="combo-package" class="underline hover:text-amber-300 ml-1 font-semibold">Tanya Promo ➜</a>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 glass-nav transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/images/logos/nadia-collective-logo.svg" alt="Nadia Collective Logo" class="h-12 w-auto object-contain">
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#projects" class="text-stone-700 hover:text-stone-950 transition-colors">Unit Bisnis</a>
+        <a href="afisabouquet/index.html" class="flex items-center gap-1.5 text-stone-700 hover:text-[#D9777F] transition-colors">
+          <span>💐 Afisa Bouquet</span>
+          <span class="text-[10px] bg-rose-100 text-rose-700 font-semibold px-1.5 py-0.5 rounded">by Nadia & Afisa</span>
+        </a>
+        <a href="makeup-artist/index.html" class="flex items-center gap-1.5 text-stone-700 hover:text-amber-700 transition-colors">
+          <span>💄 Nadia Artistry (MUA)</span>
+        </a>
+        <a href="#bundle" class="text-stone-700 hover:text-stone-950 transition-colors">Paket Kombo</a>
+        <a href="#about" class="text-stone-700 hover:text-stone-950 transition-colors">Tentang Kami</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="hidden md:flex items-center gap-3">
+        <a 
+          href="javascript:void(0)" 
+          data-wa-type="general" 
+          class="inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-amber-300 text-xs font-semibold px-4 py-2.5 rounded-full shadow-sm transition-all"
+        >
+          <svg class="w-4 h-4 fill-current text-[#25D366]" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+          Konsultasi WhatsApp
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-stone-700 hover:text-stone-900 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm">
+      <div class="fixed right-0 top-0 bottom-0 w-4/5 max-w-xs bg-white p-6 shadow-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-4 border-b border-stone-100">
+            <img src="assets/images/logos/nadia-collective-logo.svg" alt="Nadia Collective" class="h-9 w-auto">
+            <button id="closeMobileMenu" class="p-2 text-stone-400 hover:text-stone-700">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+          <nav class="mt-6 flex flex-col gap-4 text-base font-medium">
+            <a href="index.html" class="text-stone-900 font-semibold">Beranda Hub</a>
+            <a href="afisabouquet/index.html" class="flex items-center justify-between py-2 border-b border-stone-50 text-stone-700">
+              <span>💐 Afisa Bouquet</span>
+              <span class="text-[10px] bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded font-bold">by Nadia & Afisa</span>
+            </a>
+            <a href="makeup-artist/index.html" class="flex items-center justify-between py-2 border-b border-stone-50 text-stone-700">
+              <span>💄 Nadia Artistry (MUA)</span>
+              <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-bold">Makeup</span>
+            </a>
+            <a href="#bundle" class="py-2 text-stone-700">✨ Paket Kombo Wisuda</a>
+            <a href="#about" class="py-2 text-stone-700">Tentang Kami</a>
+          </nav>
+        </div>
+
+        <div class="pt-6 border-t border-stone-100">
+          <a 
+            href="javascript:void(0)" 
+            data-wa-type="general" 
+            class="w-full py-3 bg-[#25D366] text-white rounded-xl text-center text-sm font-semibold flex items-center justify-center gap-2 shadow"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+            Hubungi Nadia (WhatsApp)
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <!-- Decorative background blurs -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-rose-200/40 via-amber-100/40 to-stone-200/40 blur-3xl pointer-events-none rounded-full -z-10"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <span class="inline-block uppercase tracking-[0.25em] text-xs font-semibold text-stone-500 bg-white/80 border border-stone-200/80 px-4 py-1.5 rounded-full shadow-sm mb-6">
+        Curated Artistry &amp; Celebration Studio • Samarinda
+      </span>
+      <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-stone-900 leading-[1.15]">
+        Menyempurnakan Momen <br>
+        <span class="italic font-serif text-[#C5A059]">Paling Bermakna</span> dalam Hidup Anda
+      </h1>
+      <p class="mt-6 text-stone-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        Selamat datang di <strong>Nadia Collective</strong>. Rumah bagi keindahan karya tangan buket estetik dari <em>Afisa Bouquet</em> dan sentuhan riasan wajah profesional dari <em>Nadia Artistry</em>.
+      </p>
+
+      <div class="mt-8 flex flex-wrap justify-center items-center gap-4">
+        <a href="#projects" class="px-7 py-3.5 rounded-full bg-stone-900 text-white hover:bg-stone-800 text-xs sm:text-sm font-semibold tracking-wider transition-all shadow-md">
+          PILIH LAYANAN KAMI ↓
+        </a>
+        <a href="#bundle" class="px-7 py-3.5 rounded-full bg-white text-stone-800 hover:bg-stone-50 border border-stone-200 text-xs sm:text-sm font-semibold transition-all shadow-sm flex items-center gap-2">
+          <span>✨ Paket Hemat Kombo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO MAIN PILLARS / BUSINESS UNITS -->
+  <section id="projects" class="py-12 bg-white/70 border-y border-stone-200/60 relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold">Layanan Kami</span>
+        <h2 class="font-serif text-2xl sm:text-4xl text-stone-900 font-semibold mt-2">Dua Karya, Satu Dedikasi</h2>
+        <p class="text-stone-500 text-xs sm:text-sm mt-2">Pilih showcase layanan yang ingin Anda jelajahi di bawah ini:</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        
+        <!-- CARD 1: AFISA BOUQUET -->
+        <div class="glass-card rounded-3xl overflow-hidden border border-rose-100 hover-lift flex flex-col justify-between group shadow-sm">
+          <div class="relative aspect-[16/10] overflow-hidden bg-rose-50">
+            <img 
+              src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=900&q=80" 
+              alt="Afisa Bouquet Showcase" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent"></div>
+            
+            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#D9777F]"></span>
+              <span class="text-[11px] font-semibold text-stone-800">Joint Project by Nadia &amp; Afisa</span>
+            </div>
+
+            <div class="absolute bottom-5 left-5 right-5 text-white">
+              <p class="text-xs tracking-widest uppercase text-rose-200 font-semibold">Florist &amp; Gift Studio</p>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-0.5">Afisa Bouquet</h3>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-stone-600 text-xs sm:text-sm leading-relaxed">
+                Rangkaian buket bunga satin handmade abadi, buket uang (money bouquet), snack, buket kawat bulu lucu, dan hampers gift box eksklusif. Dikerjakan dengan cinta dan kerapian tingkat tinggi untuk wisuda, ulang tahun, dan sempro.
+              </p>
+
+              <!-- Features tags -->
+              <div class="flex flex-wrap gap-2 mt-5">
+                <span class="text-xs bg-rose-50 text-[#B5525B] px-3 py-1 rounded-full font-medium">🎓 Buket Wisuda & Sempro</span>
+                <span class="text-xs bg-rose-50 text-[#B5525B] px-3 py-1 rounded-full font-medium">💐 Mawar Satin Awet</span>
+                <span class="text-xs bg-rose-50 text-[#B5525B] px-3 py-1 rounded-full font-medium">💵 Money Bouquet Aman</span>
+                <span class="text-xs bg-rose-50 text-[#B5525B] px-3 py-1 rounded-full font-medium">🎁 Dama Parfume Gift Box</span>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-5 border-t border-stone-100 flex items-center justify-between">
+              <span class="text-xs text-stone-500 font-medium">Mulai Rp 35.000 • Samarinda</span>
+              <a 
+                href="afisabouquet/index.html" 
+                class="inline-flex items-center gap-2 bg-[#D9777F] hover:bg-[#B5525B] text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full shadow transition-all group-hover:gap-3"
+              >
+                Lihat Katalog Buket
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: NADIA ARTISTRY (MUA) -->
+        <div class="glass-card rounded-3xl overflow-hidden border border-amber-100 hover-lift flex flex-col justify-between group shadow-sm">
+          <div class="relative aspect-[16/10] overflow-hidden bg-amber-50">
+            <img 
+              src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80" 
+              alt="Nadia Artistry Makeup" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent"></div>
+            
+            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span class="text-[11px] font-semibold text-stone-800">Professional Makeup by Nadia</span>
+            </div>
+
+            <div class="absolute bottom-5 left-5 right-5 text-white">
+              <p class="text-xs tracking-widest uppercase text-amber-200 font-semibold">Beauty &amp; Hair Styling</p>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-0.5">Nadia Artistry</h3>
+            </div>
+          </div>
+
+          <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-stone-600 text-xs sm:text-sm leading-relaxed">
+                Jasa rias wajah profesional dengan hasil akhir halus, tahan lama, dan menonjolkan kecantikan alami Anda. Spesialisasi makeup wisuda anti-crack, lamaran/engagement glowing, akad nikah sakral, hingga party glam.
+              </p>
+
+              <!-- Features tags -->
+              <div class="flex flex-wrap gap-2 mt-5">
+                <span class="text-xs bg-amber-50 text-amber-900 px-3 py-1 rounded-full font-medium">✨ Flawless Graduation Look</span>
+                <span class="text-xs bg-amber-50 text-amber-900 px-3 py-1 rounded-full font-medium">💍 Engagement & Prewedding</span>
+                <span class="text-xs bg-amber-50 text-amber-900 px-3 py-1 rounded-full font-medium">👰 Akad Nikah & Wedding</span>
+                <span class="text-xs bg-amber-50 text-amber-900 px-3 py-1 rounded-full font-medium">🚗 Home Service Samarinda</span>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-5 border-t border-stone-100 flex items-center justify-between">
+              <span class="text-xs text-stone-500 font-medium">Mulai Rp 200.000 • Include Hijab/Hair</span>
+              <a 
+                href="makeup-artist/index.html" 
+                class="inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-amber-300 text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full shadow transition-all group-hover:gap-3"
+              >
+                Lihat Portofolio MUA
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIAL COLLABORATION / BUNDLE SECTION -->
+  <section id="bundle" class="py-20 bg-stone-900 text-white relative overflow-hidden">
+    <!-- subtle pattern -->
+    <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-20 -top-20 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="glass-card bg-stone-800/80 border border-stone-700 rounded-3xl p-8 sm:p-12 text-center md:text-left flex flex-col md:flex-row items-center gap-8 justify-between shadow-2xl">
+        <div class="max-w-xl">
+          <div class="inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+            <span>✨ Solusi Praktis Wisuda &amp; Lamaran</span>
+          </div>
+          <h2 class="font-serif text-2xl sm:text-4xl font-bold leading-snug">
+            Paket Kombo All-in-One: <br>
+            <span class="italic font-serif text-amber-300">Makeup Cantik</span> + <span class="text-rose-300">Buket Istimewa</span>
+          </h2>
+          <p class="text-stone-300 text-xs sm:text-sm mt-3 leading-relaxed">
+            Tidak perlu repot mencari MUA dan florist terpisah! Dapatkan riasan wisuda atau lamaran oleh <strong>Nadia Artistry</strong> sekaligus buket cantik dari <strong>Afisa Bouquet</strong> dalam satu kali koordinasi pemesanan. Lebih hemat, praktis, dan serasi.
+          </p>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-5 text-xs text-stone-200">
+            <li class="flex items-center gap-2">✓ 1 Kontak WhatsApp langsung teratur</li>
+            <li class="flex items-center gap-2">✓ Hemat biaya &amp; waktu persiapan</li>
+            <li class="flex items-center gap-2">✓ Warna buket bisa disesuaikan baju/kebaya</li>
+            <li class="flex items-center gap-2">✓ Buket diantar / diambil bersamaan</li>
+          </ul>
+        </div>
+
+        <div class="flex-shrink-0 text-center">
+          <div class="bg-stone-900/90 border border-amber-400/30 p-6 rounded-2xl shadow-xl">
+            <span class="block text-xs uppercase text-amber-200 font-semibold tracking-wider">Harga Bundling Mulai</span>
+            <span class="block font-serif text-3xl font-bold text-white mt-1">Rp 265.000</span>
+            <span class="block text-[11px] text-stone-400 mt-1 line-through">Harga normal Rp 295.000</span>
+
+            <a 
+              href="javascript:void(0)" 
+              data-wa-type="combo-package" 
+              class="mt-5 w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-bold py-3 px-5 rounded-xl shadow-lg transition-transform active:scale-95"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+              Tanya / Pesan Paket Kombo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & PHILOSOPHY SECTION -->
+  <section id="about" class="py-20 bg-[#FAF8F5]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center">
+        <span class="text-xs uppercase tracking-widest text-stone-400 font-semibold">Our Story</span>
+        <h2 class="font-serif text-2xl sm:text-3xl text-stone-900 font-bold mt-2">Di Balik Layar Nadia Collective</h2>
+        <div class="w-12 h-0.5 bg-[#C5A059] mx-auto my-4"></div>
+        <p class="text-stone-600 text-sm leading-relaxed max-w-2xl mx-auto">
+          Berawal dari kecintaan terhadap seni tata rias dan keindahan rangkaian bunga kerajinan tangan. Nadia mendirikan studio kecantikan <strong>Nadia Artistry</strong> dan bermitra bersama sahabatnya, Afisa, menghadirkan <strong>Afisa Bouquet</strong>.
+        </p>
+        <p class="text-stone-600 text-sm leading-relaxed max-w-2xl mx-auto mt-3">
+          Kami percaya setiap senyuman kelulusan, janji suci pertunangan, dan ucapan terima kasih layak diabadikan dengan riasan terbaik dan hadiah buket yang tak terlupakan.
+        </p>
+      </div>
+
+      <!-- Workshop / Info details -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 bg-amber-50 rounded-full flex items-center justify-center mx-auto text-amber-700 mb-3">
+            📍
+          </div>
+          <h4 class="font-serif font-bold text-stone-900 text-sm">Lokasi Workshop</h4>
+          <p class="text-xs text-stone-500 mt-1">Jl. Revolusi, arah Gg. Kasih (samping Dama Parfume), Samarinda</p>
+        </div>
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 bg-emerald-50 rounded-full flex items-center justify-center mx-auto text-emerald-700 mb-3">
+            💬
+          </div>
+          <h4 class="font-serif font-bold text-stone-900 text-sm">WhatsApp Terpusat</h4>
+          <p class="text-xs text-stone-500 mt-1">0821-5430-9113 (Nadia)<br>Fast Response & Konsultasi Ramah</p>
+        </div>
+        <div class="glass-card p-5 rounded-2xl text-center">
+          <div class="w-10 h-10 bg-rose-50 rounded-full flex items-center justify-center mx-auto text-rose-700 mb-3">
+            📸
+          </div>
+          <h4 class="font-serif font-bold text-stone-900 text-sm">Instagram Resmi</h4>
+          <p class="text-xs text-stone-500 mt-1">
+            <a href="https://www.instagram.com/afisabouquet/" target="_blank" class="text-[#D9777F] hover:underline">@afisabouquet</a> &bull; 
+            <a href="https://www.instagram.com/nadiaanfh/" target="_blank" class="text-stone-700 hover:underline">@nadiaanfh</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stone-950 text-stone-400 text-xs py-12 border-t border-stone-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="assets/images/logos/nadia-collective-logo.svg" alt="Nadia Collective" class="h-8 w-auto invert opacity-80">
+        <div>
+          <p class="font-semibold text-stone-200 text-sm">Nadia Collective</p>
+          <p class="text-[11px] text-stone-500">Afisa Bouquet (by Nadia & Afisa) &bull; Nadia Artistry MUA</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-6">
+        <a href="afisabouquet/index.html" class="hover:text-white transition-colors">Afisa Bouquet</a>
+        <a href="makeup-artist/index.html" class="hover:text-white transition-colors">Nadia Makeup Artist</a>
+        <a href="https://www.instagram.com/afisabouquet/" target="_blank" class="hover:text-white transition-colors">IG @afisabouquet</a>
+        <a href="https://www.instagram.com/nadiaanfh/" target="_blank" class="hover:text-white transition-colors">IG @nadiaanfh</a>
+      </div>
+
+      <div>
+        <p>&copy; <span class="current-year"></span> Nadia Collective. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="javascript:void(0)" data-wa-type="general" class="floating-wa-btn" aria-label="Chat WhatsApp">
+    <span class="pulse-ring"></span>
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+    <span class="hidden sm:inline">Tanya Kami</span>
+  </a>
+
+  <!-- Common Script -->
+  <script src="assets/js/common.js"></script>
+</body>
+</html>

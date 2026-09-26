@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afisa Bouquet | Handcrafted Florist & Gift by Nadia & Afisa Samarinda</title>
+  <meta name="description" content="Showcase resmi Afisa Bouquet by Nadia & Afisa di Samarinda. Tersedia buket wisuda, mawar satin abadi, buket uang (money bouquet), snack bouquet, dan hampers parfum.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/afisa-bouquet-logo.svg">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#FFF9F9] text-stone-800 antialiased selection:bg-rose-100 selection:text-rose-900">
+
+  <!-- CROSS PROMO TOP BANNER -->
+  <div class="bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 text-stone-200 text-xs py-2 px-4 text-center tracking-wider flex items-center justify-center gap-2">
+    <span>✨ Butuh jasa makeup untuk wisuda / lamaran?</span>
+    <a href="../makeup-artist/index.html" class="text-amber-300 font-bold underline hover:text-amber-200">Lihat Nadia Artistry (MUA) ➜</a>
+    <span class="hidden sm:inline text-stone-400">| Paket Kombo Tersedia!</span>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 glass-nav transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="../assets/images/logos/afisa-bouquet-logo.svg" alt="Afisa Bouquet Logo" class="h-12 w-auto object-contain">
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="#katalog" class="text-stone-700 hover:text-[#D9777F] transition-colors">Katalog Buket</a>
+        <a href="#keunggulan" class="text-stone-700 hover:text-[#D9777F] transition-colors">Keunggulan</a>
+        <a href="#cara-pesan" class="text-stone-700 hover:text-[#D9777F] transition-colors">Cara Pesan</a>
+        <a href="#testimoni" class="text-stone-700 hover:text-[#D9777F] transition-colors">Testimoni</a>
+        <a href="../makeup-artist/index.html" class="flex items-center gap-1.5 text-stone-700 hover:text-amber-700 transition-colors">
+          <span>💄 Jasa MUA</span>
+        </a>
+        <a href="../index.html" class="text-xs text-stone-400 hover:text-stone-700">Hub Nadia ➜</a>
+      </nav>
+
+      <!-- WA Button -->
+      <div class="hidden md:flex items-center gap-3">
+        <a 
+          href="javascript:void(0)" 
+          data-wa-type="afisa-general" 
+          class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-sm transition-all"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+          Pesan via WhatsApp
+        </a>
+      </div>
+
+      <!-- Mobile Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-stone-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm">
+      <div class="fixed right-0 top-0 bottom-0 w-4/5 max-w-xs bg-white p-6 shadow-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-4 border-b border-stone-100">
+            <img src="../assets/images/logos/afisa-bouquet-logo.svg" alt="Afisa Bouquet" class="h-9 w-auto">
+            <button id="closeMobileMenu" class="p-2 text-stone-400">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+          <nav class="mt-6 flex flex-col gap-4 text-base font-medium">
+            <a href="#katalog" class="text-stone-800">Katalog Buket</a>
+            <a href="#keunggulan" class="text-stone-800">Keunggulan</a>
+            <a href="#cara-pesan" class="text-stone-800">Cara Pemesanan</a>
+            <a href="#testimoni" class="text-stone-800">Testimoni Pembeli</a>
+            <a href="../makeup-artist/index.html" class="flex items-center justify-between py-2 border-t border-stone-100 text-stone-700">
+              <span>💄 Nadia Artistry (MUA)</span>
+              <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-bold">Layanan Lain</span>
+            </a>
+            <a href="../index.html" class="text-xs text-stone-500">← Kembali ke Hub Utama</a>
+          </nav>
+        </div>
+
+        <div class="pt-6 border-t border-stone-100">
+          <a href="javascript:void(0)" data-wa-type="afisa-general" class="w-full py-3 bg-[#25D366] text-white rounded-xl text-center text-sm font-semibold flex items-center justify-center gap-2 shadow">
+            Chat WhatsApp Afisa Bouquet
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-10 pb-16 md:pt-16 md:pb-24 overflow-hidden">
+    <div class="absolute top-0 right-10 w-96 h-96 bg-rose-200/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Text Left -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-rose-100/80 border border-rose-200 text-[#B5525B] text-xs font-semibold px-3 py-1.5 rounded-full mb-5">
+            <span>💐 Crafted with Love by Nadia &amp; Afisa</span>
+          </div>
+
+          <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-stone-900 leading-[1.15]">
+            Rangkaian Buket Cantik untuk <span class="italic text-[#D9777F]">Momen Paling Spesial</span>
+          </h1>
+
+          <p class="mt-5 text-stone-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Dari wisuda kelulusan, sidang skripsi/sempro, kado ulang tahun, hingga hadiah perayaan hari jadi. Kami menghadirkan buket satin abadi, buket uang, snack, dan hampers custom berkualitas di <strong>Samarinda</strong>.
+          </p>
+
+          <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
+            <a href="#katalog" class="px-7 py-3.5 rounded-full bg-[#D9777F] hover:bg-[#B5525B] text-white text-xs sm:text-sm font-semibold tracking-wider transition-all shadow-md">
+              LIHAT KATALOG LENGKAP ↓
+            </a>
+            <a href="javascript:void(0)" data-wa-type="afisa-general" class="px-7 py-3.5 rounded-full bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 text-xs sm:text-sm font-semibold transition-all shadow-sm flex items-center gap-2">
+              <svg class="w-4 h-4 fill-current text-[#25D366]" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+              Konsultasi WhatsApp
+            </a>
+          </div>
+
+          <!-- Quick badges -->
+          <div class="mt-8 pt-6 border-t border-rose-100 flex flex-wrap justify-center lg:justify-start gap-5 text-xs text-stone-500 font-medium">
+            <span class="flex items-center gap-1.5"><span class="text-emerald-500">✓</span> Free Kartu Ucapan</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-500">✓</span> Bisa Request Budget &amp; Warna</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-500">✓</span> Pengiriman Samarinda &amp; Sekitarnya</span>
+          </div>
+        </div>
+
+        <!-- Image Right Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-sm lg:max-w-none">
+            <div class="glass-card p-3 rounded-3xl shadow-xl border border-rose-200/70 overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-500">
+              <img 
+                src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80" 
+                alt="Afisa Bouquet Graduation" 
+                class="w-full aspect-[4/5] object-cover rounded-2xl"
+              />
+            </div>
+
+            <!-- Floating Mini Card -->
+            <div class="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-rose-100 max-w-xs flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500 font-bold text-lg">
+                🌸
+              </div>
+              <div>
+                <p class="text-xs font-bold text-stone-900">Bisa Pesan H-1 / Express</p>
+                <p class="text-[11px] text-stone-500">Sesuai ketersediaan slot harian</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIAL BUNDLE PROMO NOTIFICATION (Wisuda Combo) -->
+  <section class="py-6 bg-rose-50/70 border-y border-rose-200/50">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">🎓✨</span>
+        <div>
+          <h4 class="font-bold text-stone-900 text-sm">Persiapan Wisuda Lengkap (Makeup + Buket)?</h4>
+          <p class="text-stone-500 text-xs">Pesan paket kolaborasi Makeup Nadia Artistry + Buket Afisa Bouquet untuk harga khusus.</p>
+        </div>
+      </div>
+      <a 
+        href="../makeup-artist/index.html#paket" 
+        class="inline-flex items-center gap-1.5 bg-stone-900 hover:bg-stone-800 text-amber-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm"
+      >
+        Cek Paket Kombo ➜
+      </a>
+    </div>
+  </section>
+
+  <!-- PRODUCT SHOWCASE / CATALOG -->
+  <section id="katalog" class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs uppercase tracking-widest text-[#B5525B] font-bold">Koleksi Buket Pilihan</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 font-bold mt-2">Katalog &amp; Inspirasi Desain</h2>
+        <p class="text-stone-500 text-xs sm:text-sm mt-2">
+          Pilih kategori yang Anda inginkan. Klik pada foto untuk melihat detail atau klik <strong>"Tanya / Pesan"</strong> untuk langsung tersambung ke WhatsApp kami.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <button 
+          onclick="filterBouquets('all')" 
+          data-category="all"
+          class="cat-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-[#B5525B] text-white shadow-md transition-all"
+        >
+          Semua Koleksi
+        </button>
+        <button 
+          onclick="filterBouquets('wisuda')" 
+          data-category="wisuda"
+          class="cat-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-rose-50 border border-stone-200 transition-all"
+        >
+          🎓 Wisuda &amp; Sempro
+        </button>
+        <button 
+          onclick="filterBouquets('satin')" 
+          data-category="satin"
+          class="cat-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-rose-50 border border-stone-200 transition-all"
+        >
+          💐 Bunga Satin &amp; Kawat Bulu
+        </button>
+        <button 
+          onclick="filterBouquets('money')" 
+          data-category="money"
+          class="cat-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-rose-50 border border-stone-200 transition-all"
+        >
+          💵 Money Bouquet
+        </button>
+        <button 
+          onclick="filterBouquets('snack')" 
+          data-category="snack"
+          class="cat-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-rose-50 border border-stone-200 transition-all"
+        >
+          🍫 Snack &amp; Chocolate
+        </button>
+        <button 
+          onclick="filterBouquets('gift')" 
+          data-category="gift"
+          class="cat-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-rose-50 border border-stone-200 transition-all"
+        >
+          🎁 Gift Box &amp; Parfume
+        </button>
+      </div>
+
+      <!-- Products Grid (Filled dynamically via JS) -->
+      <div id="bouquetProductGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- JS will populate cards -->
+      </div>
+
+      <!-- Custom Request Notice -->
+      <div class="mt-12 glass-card bg-rose-50/60 border border-rose-200/80 p-6 rounded-2xl text-center max-w-2xl mx-auto">
+        <h4 class="font-serif font-bold text-stone-900 text-base">Punya Referensi Buket Sendiri dari Pinterest atau Instagram?</h4>
+        <p class="text-xs text-stone-600 mt-1.5">
+          Kami sangat menerima pesanan custom! Cukup kirimkan foto referensi buket impian Anda dan sebutkan budget yang diinginkan ke WhatsApp kami.
+        </p>
+        <a 
+          href="javascript:void(0)" 
+          data-wa-type="afisa-general" 
+          class="mt-4 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-bold px-5 py-2.5 rounded-full shadow"
+        >
+          Kirim Foto Referensi via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="keunggulan" class="py-16 bg-[#FFF9F9] border-t border-rose-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest text-[#B5525B] font-bold">Kenapa Kami?</span>
+        <h2 class="font-serif text-3xl text-stone-900 font-bold mt-2">Sentuhan Spesial di Setiap Rangkaian</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="glass-card p-6 rounded-2xl text-center">
+          <div class="w-12 h-12 bg-rose-100 text-[#B5525B] rounded-2xl flex items-center justify-center mx-auto text-xl mb-4">
+            🎨
+          </div>
+          <h3 class="font-serif font-bold text-stone-900 text-base">100% Handcrafted</h3>
+          <p class="text-xs text-stone-500 mt-2 leading-relaxed">
+            Dibuat teliti oleh tangan terampil Nadia &amp; Afisa dengan detail kelopak rapi dan presisi.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl text-center">
+          <div class="w-12 h-12 bg-rose-100 text-[#B5525B] rounded-2xl flex items-center justify-center mx-auto text-xl mb-4">
+            ✨
+          </div>
+          <h3 class="font-serif font-bold text-stone-900 text-base">Bahan Premium &amp; Awet</h3>
+          <p class="text-xs text-stone-500 mt-2 leading-relaxed">
+            Kertas wrapping tebal anti-lecek, pita satin mengkilap, dan bunga yang tahan selamanya.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl text-center">
+          <div class="w-12 h-12 bg-rose-100 text-[#B5525B] rounded-2xl flex items-center justify-center mx-auto text-xl mb-4">
+            💌
+          </div>
+          <h3 class="font-serif font-bold text-stone-900 text-base">Free Kartu Ucapan</h3>
+          <p class="text-xs text-stone-500 mt-2 leading-relaxed">
+            Gratis cetak/tulis tangan kartu ucapan manis dan personal untuk setiap buket pesanan Anda.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl text-center">
+          <div class="w-12 h-12 bg-rose-100 text-[#B5525B] rounded-2xl flex items-center justify-center mx-auto text-xl mb-4">
+            ⏱️
+          </div>
+          <h3 class="font-serif font-bold text-stone-900 text-base">Tepat Waktu &amp; Tanggap</h3>
+          <p class="text-xs text-stone-500 mt-2 leading-relaxed">
+            Pengerjaan tepat waktu sesuai jadwal acara Anda. Bisa self-pickup atau kirim via kurir Samarinda.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER (4 STEPS) -->
+  <section id="cara-pesan" class="py-16 bg-white border-t border-rose-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest text-[#B5525B] font-bold">Langkah Mudah</span>
+        <h2 class="font-serif text-3xl text-stone-900 font-bold mt-2">Cara Pemesanan Buket</h2>
+        <p class="text-stone-500 text-xs sm:text-sm mt-1">Hanya 4 langkah mudah tanpa sistem checkout yang ribet:</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="relative p-5 rounded-2xl border border-stone-200/80 bg-stone-50/50">
+          <span class="font-serif text-3xl font-bold text-rose-300">01</span>
+          <h4 class="font-serif font-bold text-stone-900 text-sm mt-2">Pilih Model Buket</h4>
+          <p class="text-xs text-stone-500 mt-1 leading-relaxed">Pilih salah satu varian di katalog kami atau kirimkan foto referensi Anda sendiri.</p>
+        </div>
+
+        <div class="relative p-5 rounded-2xl border border-stone-200/80 bg-stone-50/50">
+          <span class="font-serif text-3xl font-bold text-rose-300">02</span>
+          <h4 class="font-serif font-bold text-stone-900 text-sm mt-2">Chat via WhatsApp</h4>
+          <p class="text-xs text-stone-500 mt-1 leading-relaxed">Klik tombol WhatsApp untuk konfirmasi tanggal acara, warna wrapping, dan teks kartu ucapan.</p>
+        </div>
+
+        <div class="relative p-5 rounded-2xl border border-stone-200/80 bg-stone-50/50">
+          <span class="font-serif text-3xl font-bold text-rose-300">03</span>
+          <h4 class="font-serif font-bold text-stone-900 text-sm mt-2">DP &amp; Pengerjaan</h4>
+          <p class="text-xs text-stone-500 mt-1 leading-relaxed">Lakukan pembayaran (DP/Lunas). Rangkaian buket Anda akan mulai dirangkai dengan teliti.</p>
+        </div>
+
+        <div class="relative p-5 rounded-2xl border border-stone-200/80 bg-stone-50/50">
+          <span class="font-serif text-3xl font-bold text-rose-300">04</span>
+          <h4 class="font-serif font-bold text-stone-900 text-sm mt-2">Ambil / Pengiriman</h4>
+          <p class="text-xs text-stone-500 mt-1 leading-relaxed">Buket siap diambil di workshop (Samarinda) atau dikirim langsung ke lokasi menggunakan kurir lokal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimoni" class="py-16 bg-[#FFF9F9]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs uppercase tracking-widest text-[#B5525B] font-bold">Cerita Pelanggan</span>
+        <h2 class="font-serif text-3xl text-stone-900 font-bold mt-2">Kepuasan Pelanggan Afisa Bouquet</h2>
+      </div>
+
+      <div id="bouquetTestimonialGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Rendered via bouquet.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION & WORKSHOP INFO -->
+  <section class="py-12 bg-white border-t border-rose-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="glass-card p-8 rounded-3xl border border-rose-100 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#B5525B]">Workshop Samarinda</span>
+          <h3 class="font-serif text-2xl font-bold text-stone-900 mt-1">Kunjungi Workshop Afisa Bouquet</h3>
+          <p class="text-xs sm:text-sm text-stone-600 mt-2 max-w-lg leading-relaxed">
+            Jl. Revolusi, arah Gg. Kasih (bersebelahan dengan Dama Parfume), Samarinda, Kalimantan Timur.<br>
+            Tersedia pilihan buket ready stock dan sample parfum.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+          <a 
+            href="https://www.instagram.com/afisabouquet/" 
+            target="_blank" 
+            class="px-5 py-2.5 rounded-full border border-stone-300 text-stone-700 hover:border-[#D9777F] hover:text-[#D9777F] text-xs font-semibold transition-all flex items-center gap-2"
+          >
+            Follow IG @afisabouquet
+          </a>
+          <a 
+            href="javascript:void(0)" 
+            data-wa-type="afisa-general" 
+            class="px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-semibold transition-all flex items-center gap-2 shadow"
+          >
+            Chat WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stone-950 text-stone-400 text-xs py-10 border-t border-stone-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div class="flex items-center gap-3">
+        <img src="../assets/images/logos/afisa-bouquet-logo.svg" alt="Afisa Bouquet" class="h-8 w-auto invert opacity-80">
+        <div>
+          <p class="font-semibold text-stone-200">Afisa Bouquet</p>
+          <p class="text-[11px] text-stone-500">Handcrafted Florist &amp; Gifts by Nadia &amp; Afisa</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="../index.html" class="hover:text-white transition-colors">Nadia Collective Hub</a>
+        <a href="../makeup-artist/index.html" class="hover:text-white transition-colors">Nadia Makeup Artist</a>
+        <a href="https://www.instagram.com/afisabouquet/" target="_blank" class="hover:text-white transition-colors">Instagram</a>
+      </div>
+
+      <p>&copy; <span class="current-year"></span> Afisa Bouquet. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="imageLightboxModal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="modal-content glass-card bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative border border-white/40" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-stone-900/60 hover:bg-stone-900 text-white flex items-center justify-center transition-colors">
+        ✕
+      </button>
+      <div class="aspect-[4/3] bg-stone-100 overflow-hidden">
+        <img id="lightboxImage" src="" alt="Detail Buket" class="w-full h-full object-cover">
+      </div>
+      <div class="p-6">
+        <span id="lightboxCategory" class="text-xs uppercase font-semibold text-[#B5525B] tracking-wider">Kategori</span>
+        <h3 id="lightboxTitle" class="font-serif text-xl font-bold text-stone-900 mt-1">Nama Buket</h3>
+        <p id="lightboxPrice" class="text-base font-bold text-stone-900 mt-2 text-rose-600">Harga</p>
+        <div class="mt-6 flex items-center gap-3">
+          <a id="lightboxWaBtn" href="#" target="_blank" class="flex-1 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-xl text-center text-xs font-bold transition-all shadow flex items-center justify-center gap-2">
+            Pesan Model Ini via WhatsApp
+          </a>
+          <button onclick="closeLightbox()" class="py-3 px-4 border border-stone-200 text-stone-700 rounded-xl text-xs font-semibold hover:bg-stone-50">
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING WA BUTTON -->
+  <a href="javascript:void(0)" data-wa-type="afisa-general" class="floating-wa-btn" aria-label="Chat WhatsApp Afisa Bouquet">
+    <span class="pulse-ring"></span>
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+    <span class="hidden sm:inline">Pesan Buket</span>
+  </a>
+
+  <!-- Scripts -->
+  <script src="../assets/js/common.js"></script>
+  <script src="../assets/js/bouquet.js"></script>
+</body>
+</html>

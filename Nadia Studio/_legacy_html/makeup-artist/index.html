@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nadia Artistry | Professional Makeup Artist & Hair Styling Samarinda</title>
+  <meta name="description" content="Portofolio resmi Nadia Artistry MUA di Samarinda. Melayani makeup wisuda, lamaran / engagement, prewedding, akad nikah, dan party glam dengan complexion tahan lama.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/nadia-artistry-logo.svg">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#FAF8F5] text-stone-800 antialiased selection:bg-amber-100 selection:text-amber-900">
+
+  <!-- CROSS PROMO TOP BANNER -->
+  <div class="bg-gradient-to-r from-stone-950 via-stone-900 to-stone-950 text-stone-200 text-xs py-2 px-4 text-center tracking-wider flex items-center justify-center gap-2">
+    <span>💐 Ingin foto wisuda makin manis dengan buket cantik?</span>
+    <a href="../afisabouquet/index.html" class="text-rose-300 font-bold underline hover:text-rose-200">Lihat Afisa Bouquet (by Nadia & Afisa) ➜</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 glass-nav transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="../assets/images/logos/nadia-artistry-logo.svg" alt="Nadia Artistry Logo" class="h-12 w-auto object-contain">
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="#portofolio" class="text-stone-700 hover:text-amber-800 transition-colors">Portofolio Look</a>
+        <a href="#paket" class="text-stone-700 hover:text-amber-800 transition-colors">Pricelist Paket</a>
+        <a href="#keunggulan" class="text-stone-700 hover:text-amber-800 transition-colors">Keunggulan</a>
+        <a href="#cara-booking" class="text-stone-700 hover:text-amber-800 transition-colors">Cara Booking</a>
+        <a href="#testimoni" class="text-stone-700 hover:text-amber-800 transition-colors">Testimoni</a>
+        <a href="../afisabouquet/index.html" class="flex items-center gap-1.5 text-stone-700 hover:text-[#D9777F] transition-colors">
+          <span>💐 Afisa Bouquet</span>
+        </a>
+      </nav>
+
+      <!-- WA Button -->
+      <div class="hidden md:flex items-center gap-3">
+        <a 
+          href="javascript:void(0)" 
+          data-wa-type="mua-general" 
+          class="inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-amber-300 text-xs font-semibold px-4 py-2.5 rounded-full shadow-sm transition-all"
+        >
+          <svg class="w-4 h-4 fill-current text-[#25D366]" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+          Konsultasi Jadwal Rias
+        </a>
+      </div>
+
+      <!-- Mobile Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 text-stone-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm">
+      <div class="fixed right-0 top-0 bottom-0 w-4/5 max-w-xs bg-white p-6 shadow-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-4 border-b border-stone-100">
+            <img src="../assets/images/logos/nadia-artistry-logo.svg" alt="Nadia Artistry" class="h-9 w-auto">
+            <button id="closeMobileMenu" class="p-2 text-stone-400">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+          <nav class="mt-6 flex flex-col gap-4 text-base font-medium">
+            <a href="#portofolio" class="text-stone-800">Portofolio Riasan</a>
+            <a href="#paket" class="text-stone-800">Pricelist Paket</a>
+            <a href="#keunggulan" class="text-stone-800">Keunggulan Layanan</a>
+            <a href="#cara-booking" class="text-stone-800">Cara Booking</a>
+            <a href="#testimoni" class="text-stone-800">Testimoni Klien</a>
+            <a href="../afisabouquet/index.html" class="flex items-center justify-between py-2 border-t border-stone-100 text-stone-700">
+              <span>💐 Afisa Bouquet</span>
+              <span class="text-[10px] bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded font-bold">Koleksi Buket</span>
+            </a>
+            <a href="../index.html" class="text-xs text-stone-500">← Kembali ke Hub Utama</a>
+          </nav>
+        </div>
+
+        <div class="pt-6 border-t border-stone-100">
+          <a href="javascript:void(0)" data-wa-type="mua-general" class="w-full py-3 bg-[#25D366] text-white rounded-xl text-center text-sm font-semibold flex items-center justify-center gap-2 shadow">
+            Chat WhatsApp Nadia Artistry
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-10 pb-16 md:pt-16 md:pb-24 overflow-hidden">
+    <div class="absolute top-0 right-10 w-96 h-96 bg-amber-200/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Text Left -->
+        <div class="lg:col-span-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-amber-50 border border-amber-200/80 text-amber-900 text-xs font-semibold px-3 py-1.5 rounded-full mb-5">
+            <span>✨ Professional Makeup Artist • Samarinda</span>
+          </div>
+
+          <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-stone-900 leading-[1.15]">
+            Sentuhan Riasan <span class="italic font-serif text-[#C5A059]">Flawless &amp; Radiant</span> untuk Setiap Momen Sakral
+          </h1>
+
+          <p class="mt-5 text-stone-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Menonjolkan pesona terbaik dari fitur wajah Anda. Spesialisasi makeup wisuda tahan lama anti-crack, lamaran elegan, prewedding, hingga hari pernikahan sakral di Samarinda.
+          </p>
+
+          <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
+            <a href="#paket" class="px-7 py-3.5 rounded-full bg-stone-900 hover:bg-stone-800 text-amber-300 text-xs sm:text-sm font-semibold tracking-wider transition-all shadow-md">
+              LIHAT PRICELIST &amp; PAKET ↓
+            </a>
+            <a href="javascript:void(0)" data-wa-type="mua-general" class="px-7 py-3.5 rounded-full bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 text-xs sm:text-sm font-semibold transition-all shadow-sm flex items-center gap-2">
+              <svg class="w-4 h-4 fill-current text-[#25D366]" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+              Konsultasi WhatsApp
+            </a>
+          </div>
+
+          <!-- Highlights -->
+          <div class="mt-8 pt-6 border-t border-stone-200/80 flex flex-wrap justify-center lg:justify-start gap-5 text-xs text-stone-500 font-medium">
+            <span class="flex items-center gap-1.5"><span class="text-amber-600">✓</span> Complexion Tahan 12+ Jam</span>
+            <span class="flex items-center gap-1.5"><span class="text-amber-600">✓</span> Include Hijab/Hair Styling</span>
+            <span class="flex items-center gap-1.5"><span class="text-amber-600">✓</span> Bisa Home Service Samarinda</span>
+          </div>
+        </div>
+
+        <!-- Image Right Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-sm lg:max-w-none">
+            <div class="glass-card p-3 rounded-3xl shadow-xl border border-amber-200/60 overflow-hidden transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+              <img 
+                src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" 
+                alt="Nadia Artistry Graduation Look" 
+                class="w-full aspect-[4/5] object-cover rounded-2xl"
+              />
+            </div>
+
+            <!-- Floating Mini Card -->
+            <div class="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-amber-100 max-w-xs flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 font-bold text-lg">
+                💄
+              </div>
+              <div>
+                <p class="text-xs font-bold text-stone-900">Skin-Friendly &amp; Higienis</p>
+                <p class="text-[11px] text-stone-500">Produk branded &amp; brush selalu disteril</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIAL BUNDLE PROMO BANNER -->
+  <section class="py-6 bg-amber-50/70 border-y border-amber-200/50">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">🎓💐</span>
+        <div>
+          <h4 class="font-bold text-stone-900 text-sm">Paket Kombo All-in-One Wisuda / Acara</h4>
+          <p class="text-stone-500 text-xs">Dapatkan Makeup Wisuda + Buket Cantik dari Afisa Bouquet dalam satu kali booking.</p>
+        </div>
+      </div>
+      <a 
+        href="#paket" 
+        class="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-600 to-[#D9777F] text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap shadow-sm hover:opacity-90 transition-opacity"
+      >
+        Lihat Paket Kombo ➜
+      </a>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO / GALLERY LOOK -->
+  <section id="portofolio" class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold">Koleksi Riasan</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 font-bold mt-2">Portofolio Riasan Nadia Artistry</h2>
+        <p class="text-stone-500 text-xs sm:text-sm mt-2">
+          Pilihan look riasan sesuai dengan karakter dan konsep acara impian Anda. Klik foto untuk memperbesar atau konsultasikan langsung via WhatsApp.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <button 
+          onclick="filterMakeupGallery('all')" 
+          data-category="all"
+          class="mua-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-stone-900 text-amber-300 shadow-md transition-all"
+        >
+          Semua Look
+        </button>
+        <button 
+          onclick="filterMakeupGallery('wisuda')" 
+          data-category="wisuda"
+          class="mua-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-amber-50 border border-stone-200 transition-all"
+        >
+          🎓 Wisuda &amp; Sempro
+        </button>
+        <button 
+          onclick="filterMakeupGallery('engagement')" 
+          data-category="engagement"
+          class="mua-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-amber-50 border border-stone-200 transition-all"
+        >
+          💍 Lamaran &amp; Prewedding
+        </button>
+        <button 
+          onclick="filterMakeupGallery('wedding')" 
+          data-category="wedding"
+          class="mua-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-amber-50 border border-stone-200 transition-all"
+        >
+          👰 Akad &amp; Wedding
+        </button>
+        <button 
+          onclick="filterMakeupGallery('party')" 
+          data-category="party"
+          class="mua-filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-600 hover:bg-amber-50 border border-stone-200 transition-all"
+        >
+          ✨ Party &amp; Event
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div id="makeupGalleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Rendered via makeup.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICELIST & PACKAGES SECTION -->
+  <section id="paket" class="py-16 md:py-24 bg-[#FAF8F5] border-t border-stone-200/70">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold">Investasi Kecantikan</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-stone-900 font-bold mt-2">Pilihan Paket Layanan &amp; Bundling</h2>
+        <p class="text-stone-500 text-xs sm:text-sm mt-2">
+          Transparan dan berkualitas. Sudah termasuk styling rambut atau hijab dan free konsultasi.
+        </p>
+      </div>
+
+      <!-- Packages Grid -->
+      <div id="makeupPackagesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Rendered via makeup.js -->
+      </div>
+
+      <!-- Notice -->
+      <p class="text-center text-xs text-stone-400 mt-8">
+        * Biaya transportasi home service menyesuaikan jarak dari workshop Samarinda. Hubungi kami untuk penyesuaian khusus.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="keunggulan" class="py-16 bg-white border-t border-stone-200/70">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold">Standar Kualitas</span>
+        <h2 class="font-serif text-3xl text-stone-900 font-bold mt-2">Keunggulan Nadia Artistry</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="glass-card p-6 rounded-2xl text-center">
+          <div class="w-12 h-12 bg-amber-50 text-amber-800 rounded-2xl flex items-center justify-center mx-auto text-xl mb-4">
+            🧴
+          </div>
+          <h3 class="font-serif font-bold text-stone-900 text-base">Higienis &amp; Steril</h3>
+          <p class="text-xs text-stone-500 mt-2 leading-relaxed">
+            Semua kuas, spons, dan alat rias dibersihkan serta disterilisasi sebelum digunakan pada setiap klien.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl text-center">
+          <div class="w-12 h-12 bg-amber-50 text-amber-800 rounded-2xl flex items-center justify-center mx-auto text-xl mb-4">
+            ⏳
+          </div>
+          <h3 class="font-serif font-bold text-stone-900 text-base">Anti-Crack &amp; Awet</h3>
+          <p class="text-xs text-stone-500 mt-2 leading-relaxed">
+            Teknik skin-prep mendalam dan teknik baking halus memastikan complexion bertahan 12+ jam tanpa luntur.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl text-center">
+          <div class="w-12 h-12 bg-amber-50 text-amber-800 rounded-2xl flex items-center justify-center mx-auto text-xl mb-4">
+            🚗
+          </div>
+          <h3 class="font-serif font-bold text-stone-900 text-base">Home Service Samarinda</h3>
+          <p class="text-xs text-stone-500 mt-2 leading-relaxed">
+            Nadia bisa hadir langsung ke rumah atau lokasi acara Anda tepat waktu tanpa membuat Anda terburu-buru.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl text-center">
+          <div class="w-12 h-12 bg-amber-50 text-amber-800 rounded-2xl flex items-center justify-center mx-auto text-xl mb-4">
+            💐
+          </div>
+          <h3 class="font-serif font-bold text-stone-900 text-base">Satu Atap dengan Buket</h3>
+          <p class="text-xs text-stone-500 mt-2 leading-relaxed">
+            Kemudahan memesan buket Afisa Bouquet sekaligus riasan di satu nomor WhatsApp yang sama.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO BOOK (3 STEPS) -->
+  <section id="cara-booking" class="py-16 bg-[#FAF8F5] border-t border-stone-200/70">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold">Langkah Praktis</span>
+        <h2 class="font-serif text-3xl text-stone-900 font-bold mt-2">Cara Booking Jadwal Rias</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="relative p-6 rounded-2xl border border-stone-200/80 bg-white">
+          <span class="font-serif text-3xl font-bold text-amber-300">01</span>
+          <h4 class="font-serif font-bold text-stone-900 text-base mt-2">Konsultasi Jadwal</h4>
+          <p class="text-xs text-stone-500 mt-1 leading-relaxed">
+            Hubungi WhatsApp Nadia dengan menyebutkan tanggal acara, jam selesai rias, dan lokasi (Samarinda/sekitarnya).
+          </p>
+        </div>
+
+        <div class="relative p-6 rounded-2xl border border-stone-200/80 bg-white">
+          <span class="font-serif text-3xl font-bold text-amber-300">02</span>
+          <h4 class="font-serif font-bold text-stone-900 text-base mt-2">Kunci Slot (DP)</h4>
+          <p class="text-xs text-stone-500 mt-1 leading-relaxed">
+            Lakukan DP booking untuk mengamankan slot jam Anda agar tidak terisi oleh klien lain pada hari yang sama.
+          </p>
+        </div>
+
+        <div class="relative p-6 rounded-2xl border border-stone-200/80 bg-white">
+          <span class="font-serif text-3xl font-bold text-amber-300">03</span>
+          <h4 class="font-serif font-bold text-stone-900 text-base mt-2">Sesi Rias On-Time</h4>
+          <p class="text-xs text-stone-500 mt-1 leading-relaxed">
+            Nadia akan tiba tepat waktu di lokasi atau menyambut Anda di studio. Tampil memukau di momen istimewa Anda!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimoni" class="py-16 bg-white border-t border-stone-200/70">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold">Ulasan Klien</span>
+        <h2 class="font-serif text-3xl text-stone-900 font-bold mt-2">Pengalaman Klien Nadia Artistry</h2>
+      </div>
+
+      <div id="makeupTestimonialsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Rendered via makeup.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stone-950 text-stone-400 text-xs py-10 border-t border-stone-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div class="flex items-center gap-3">
+        <img src="../assets/images/logos/nadia-artistry-logo.svg" alt="Nadia Artistry" class="h-8 w-auto invert opacity-80">
+        <div>
+          <p class="font-semibold text-stone-200">Nadia Artistry</p>
+          <p class="text-[11px] text-stone-500">Professional Makeup Artist &amp; Hair Styling Samarinda</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="../index.html" class="hover:text-white transition-colors">Nadia Collective Hub</a>
+        <a href="../afisabouquet/index.html" class="hover:text-white transition-colors">Afisa Bouquet (by Nadia & Afisa)</a>
+        <a href="https://www.instagram.com/nadiaanfh/" target="_blank" class="hover:text-white transition-colors">Instagram @nadiaanfh</a>
+      </div>
+
+      <p>&copy; <span class="current-year"></span> Nadia Artistry. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="imageLightboxModal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="modal-content glass-card bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative border border-white/40" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-stone-900/60 hover:bg-stone-900 text-white flex items-center justify-center transition-colors">
+        ✕
+      </button>
+      <div class="aspect-[3/4] bg-stone-100 overflow-hidden">
+        <img id="lightboxImage" src="" alt="Detail Riasan" class="w-full h-full object-cover">
+      </div>
+      <div class="p-6">
+        <span id="lightboxCategory" class="text-xs uppercase font-semibold text-amber-700 tracking-wider">Kategori</span>
+        <h3 id="lightboxTitle" class="font-serif text-xl font-bold text-stone-900 mt-1">Nama Look</h3>
+        <p id="lightboxPrice" class="text-sm font-semibold text-stone-600 mt-1">Booking Jadwal Rias</p>
+        <div class="mt-6 flex items-center gap-3">
+          <a id="lightboxWaBtn" href="#" target="_blank" class="flex-1 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-xl text-center text-xs font-bold transition-all shadow flex items-center justify-center gap-2">
+            Request Look Ini via WhatsApp
+          </a>
+          <button onclick="closeLightbox()" class="py-3 px-4 border border-stone-200 text-stone-700 rounded-xl text-xs font-semibold hover:bg-stone-50">
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING WA BUTTON -->
+  <a href="javascript:void(0)" data-wa-type="mua-general" class="floating-wa-btn" aria-label="Chat WhatsApp Nadia Artistry">
+    <span class="pulse-ring"></span>
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+    <span class="hidden sm:inline">Booking MUA</span>
+  </a>
+
+  <!-- Scripts -->
+  <script src="../assets/js/common.js"></script>
+  <script src="../assets/js/makeup.js"></script>
+</body>
+</html>
