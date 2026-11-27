@@ -37,15 +37,17 @@
 - **Description:** Translate the user's reference websites and brand direction into a concrete design specification covering color tokens, typography scale, spacing/grid rhythm, component rules, mobile-first breakpoints, placeholder art direction, and anti-patterns.
 - **Done when:** `nadia-collection/DESIGN.md` is committed on `main` and approved by the user.
 
-### `P1-T02` — Design Option 1 & Option 2 in Figma + Placeholder Brand Logos
+### `P1-T02` — Design Option 1 & Option 2 in Figma + Placeholder Brand Logos *(DONE)*
+- **Status:** Completed (PR #1 merged on `main`; Figma frames created at [Nadia Collection: Design Exploration](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo), 3 editable placeholder SVG logos committed in `nadia-collection/public/logos/`, and all Figma URLs documented in `nadia-collection/DESIGN.md`).
 - **Role:** Designer (with Figma MCP access)
 - **Needs:** `P1-T01`
 - **Files:** `nadia-collection/DESIGN.md`, `nadia-collection/public/logos/nadia-collection-logo.svg`, `nadia-collection/public/logos/afisa-bouquet-logo.svg`, `nadia-collection/public/logos/nadia-artistry-logo.svg`
 - **Description:** Using `nadia-collection/PRD.md` and `nadia-collection/DESIGN.md`, create clean Figma frames for both **Option 1 (Single-Page Personal Hub)** and **Option 2 (Personal Hub + `/ventures/[slug]` Detail Pages)** in Desktop (`1440px`) and Mobile (`390px`), plus regenerated minimal placeholder SVG logos (editable/replaceable later in Sanity CMS). Record the Figma file/frame URLs in `nadia-collection/DESIGN.md`.
 - **Done when:** Both Figma options (desktop + mobile) are accessible in Figma, 3 clean SVG placeholder logos exist in `nadia-collection/public/logos/`, and Figma URLs are documented in `nadia-collection/DESIGN.md`.
 
-### `P1-T03` — Client Decision Gate (Select Final Layout Option)
-- **Role:** Lead (`ask_user` — Human/Client approval)
+### `P1-T03` — Client Decision Gate (Select Final Layout Option) *(DONE: Option 2 APPROVED)*
+- **Status:** Approved (**Option 2: Personal Hub `/` + Dedicated Venture Detail Pages `/ventures/[slug]`** selected by the client/user and recorded in `nadia-collection/PRD.md`, unlocking Phase 3).
+- **Role:** Lead / Designer (`ask_user` for Human/Client approval)
 - **Needs:** `P1-T02`
 - **Files:** `nadia-collection/PRD.md`, `plan.md`
 - **Description:** Pause via `ask_user` so the user can present Option 1 and Option 2 in Figma to Nadia. Once Nadia selects one option, record the approved decision (`Option 1` or `Option 2`) in `nadia-collection/PRD.md` and unlock Phase 3.
@@ -82,7 +84,7 @@
 
 ## Phase 3 — Frontend UI Implementation (`P3`)
 
-> **GATE:** Do **NOT** assign Phase 3 tasks until **`P1-T03` (Client Decision Gate)** is marked `done` and `nadia-collection/DESIGN.md` exists.
+> **GATE PASSED:** `P1-T03` (Client Decision Gate) is **APPROVED for Option 2** (Personal Hub `/` + `/ventures/[slug]` Detail Pages) and `nadia-collection/DESIGN.md` is finalized. Phase 3 tasks may proceed as soon as `P2-T02` is merged on `main`.
 
 ### `P3-T01` — Design Tokens, Base Shell, Navigation & WhatsApp Utility
 - **Role:** Developer
