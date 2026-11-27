@@ -1,12 +1,176 @@
 @import "tailwindcss";
 
 :root {
+  /* Core Surfaces */
   --bg-canvas: #fdfbfa;
+  --bg-surface: #f7eef0;
+  --bg-surface-strong: #efe0e4;
+  --bg-blush-hero: #f2d8e0;
+
+  /* Ink & Typography */
   --ink-primary: #1f171a;
   --ink-secondary: #5c4950;
+  --ink-on-dark: #fdfbfa;
+
+  /* Deliberate Rose Accent */
+  --accent-rose: #9e3b5a;
+  --accent-rose-hover: #832d48;
+
+  /* Borders & Photo Scrim */
+  --border-hairline: #e5d2d8;
+  --border-strong: #8e6f79;
+  --scrim-photo: linear-gradient(
+    to top,
+    rgba(31, 23, 26, 0.74) 0%,
+    rgba(31, 23, 26, 0.24) 48%,
+    rgba(31, 23, 26, 0) 100%
+  );
+
+  /* Typography Variables (populated via next/font/google on <html>) */
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+
+  /* Motion (MOTION 1: Calm, Purposeful, Zero Loops) */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-interactive: 180ms;
+  --duration-reveal: 200ms;
+  --duration-image: 400ms;
+}
+
+@theme inline {
+  --color-bg-canvas: var(--bg-canvas);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-surface-strong: var(--bg-surface-strong);
+  --color-bg-blush-hero: var(--bg-blush-hero);
+  --color-ink-primary: var(--ink-primary);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-on-dark: var(--ink-on-dark);
+  --color-accent-rose: var(--accent-rose);
+  --color-accent-rose-hover: var(--accent-rose-hover);
+  --color-border-hairline: var(--border-hairline);
+  --color-border-strong: var(--border-strong);
+
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+html {
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--bg-canvas);
   color: var(--ink-primary);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+
+/* Accessible WCAG 1.4.11 Focus Indicator (5.10:1 on surface-strong, 6.31:1 on canvas) */
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-rose);
+  outline-offset: 3px;
+}
+
+/* Editorial Fluid Type Scale (DESIGN.md Section 3) */
+.type-hero {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5.2vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.type-editorial {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.type-venture {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.type-subheading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: 0;
+}
+
+.type-body-lead {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.type-body {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.type-meta {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+}
+
+.type-micro {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+}
+
+/* Container Rhythm (Mobile 20px, Tablet 32px, Desktop 48px max 1320px) */
+.editorial-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1320px;
+  padding-inline: 20px;
+}
+
+@media (min-width: 640px) {
+  .editorial-container {
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .editorial-container {
+    padding-inline: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
