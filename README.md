@@ -10,21 +10,18 @@ Setiap UMKM dikelola dalam sub-folder mandiri menggunakan arsitektur **Monorepo*
 
 ```text
 help-umkm/
-├── .gitignore                   # Menghalau node_modules & build output di seluruh sub-folder
+├── .gitignore                   # Menghalau node_modules, build output, env, & runtime agent HQ
 ├── README.md                    # Panduan utama monorepo & playbook proyek baru
+├── ROLE.md                      # Aturan kerja & pagar anti-over-engineering untuk JSM HQ agents
+├── plan.md                      # Roadmap bertahap & pecahan task untuk JSM HQ Lead Agent
 │
-├── Nadia Studio/                # [UMKM #1] Afisa Bouquet & Nadia Artistry MUA (Samarinda)
-│   ├── app/                     # Next.js App Router:
-│   │   ├── page.js              # / -> Overview Hub & Galeri Karya Terfavorit
-│   │   ├── afisabouquet/        # /afisabouquet -> Showcase & Katalog Buket
-│   │   ├── makeup-artist/       # /makeup-artist -> Portofolio & Paket MUA
-│   │   ├── studio-admin/        # /studio-admin -> Endpoint Admin Rahasia (PIN: 123456)
-│   │   └── api/                 # REST API CRUD, Traffic & WhatsApp Click Tracking
-│   ├── components/              # UI Components (Apple-style Minimalist)
-│   ├── data/                    # Embedded database (db.json)
-│   ├── lib/                     # Database engine & analytics calculation
-│   ├── public/                  # Asset logo lossless SVG & screenshots
-│   └── PANDUAN_WEBSITE.md       # Buku panduan serah-terima operasional untuk pemilik UMKM
+├── nadia-collection/            # [UMKM #1 — v2 Aktif] Personal Brand Nadia Collection (Afisa Bouquet, Nadia Artistry MUA, dsb.)
+│   ├── PRD.md                   # Product Requirements Document (sumber kebenaran fitur & skema CMS)
+│   ├── DESIGN.md                # Sistem desain & referensi visual (disusun dari website referensi)
+│   └── ...                      # Next.js (App Router + TypeScript + Tailwind) + Sanity Embedded Studio (/studio)
+│
+├── archive/
+│   └── nadia-studio-v1/         # Arsip read-only versi v1 (tidak lagi dikembangkan)
 │
 └── [Nama-UMKM-Berikutnya]/      # Folder mandiri untuk proyek UMKM masa depan
 ```
@@ -35,7 +32,8 @@ help-umkm/
 
 | Nama Bisnis | Jenis Usaha | Lokasi | Stack Teknologi | Dokumentasi Khusus |
 | :--- | :--- | :--- | :--- | :--- |
-| **Nadia Studio** | Florist (*Afisa Bouquet*) & MUA (*Nadia Artistry*) | Samarinda, Kaltim | Next.js 14, Tailwind CSS, Local DB | [`Nadia Studio/PANDUAN_WEBSITE.md`](Nadia%20Studio/PANDUAN_WEBSITE.md) |
+| **Nadia Collection** *(v2 — Planning/Rebuild)* | Personal Brand Hub: Florist (*Afisa Bouquet*), MUA (*Nadia Artistry*), & lini usaha mendatang | Samarinda (Bouquet), MUA fleksibel | Next.js App Router (TS), Tailwind CSS, Sanity CMS Free Tier | [`nadia-collection/PRD.md`](nadia-collection/PRD.md) |
+| ~~Nadia Studio (v1 — Arsip)~~ | Versi terdahulu (diarsipkan) | Samarinda, Kaltim | Next.js 14 (Legacy) | [`archive/nadia-studio-v1/PANDUAN_WEBSITE.md`](archive/nadia-studio-v1/PANDUAN_WEBSITE.md) |
 
 ---
 

@@ -77,3 +77,11 @@ tmp/
 **/tmp/
 temp/
 **/temp/
+
+# JSM HQ & Antigravity Local Runtime Files (Never commit agent credentials/hooks)
+.agents/mcp_config.json
+.agents/hooks.json
+.agents/rules/jsmhq-role.md
+.jsmhq-role.md
+.jsmhq-hook.mjs
+GEMINI.md
