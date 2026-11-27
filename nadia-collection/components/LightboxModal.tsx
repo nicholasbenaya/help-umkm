@@ -55,8 +55,9 @@ export function LightboxModal({
   const activeItem = isOpen ? items[activeIndex] : null;
   const total = items.length;
 
+  // Effect 1: Manage initial focus, body scroll lock, and focus restoration ONLY on open/close
   useEffect(() => {
-    if (!isOpen || activeIndex === null) {
+    if (!isOpen) {
       return;
     }
 
@@ -69,6 +70,18 @@ export function LightboxModal({
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      previousFocusRef.current?.focus();
+    };
+  }, [isOpen]);
+
+  // Effect 2: Handle keyboard navigation and Tab focus trap without stealing focus on index change
+  useEffect(() => {
+    if (!isOpen || activeIndex === null) {
+      return;
+    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -109,9 +122,7 @@ export function LightboxModal({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
-      previousFocusRef.current?.focus();
     };
   }, [isOpen, activeIndex, total, onClose, onNavigate]);
 
