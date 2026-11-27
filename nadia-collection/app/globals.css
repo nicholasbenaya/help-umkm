@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #fdfbfa;
+  --ink-primary: #1f171a;
+  --ink-secondary: #5c4950;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+}
