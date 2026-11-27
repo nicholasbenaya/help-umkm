@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,6 +23,83 @@ export const dynamicParams = true;
 export async function generateStaticParams() {
   const slugs = await getVentureSlugs();
   return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const [{ settings }, venture] = await Promise.all([
+    getSiteData(),
+    getVentureBySlug(slug),
+  ]);
+
+  if (!venture) {
+    return {
+      title: "Lini Usaha Tidak Ditemukan",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const title = venture.serviceArea
+    ? `${venture.name} (${venture.category}, ${venture.serviceArea})`
+    : `${venture.name} (${venture.category})`;
+  const description =
+    venture.shortDescription ||
+    venture.fullDescription ||
+    settings.seoDescription ||
+    settings.tagline;
+
+  const ogImageUrl =
+    getSanityImageUrl(venture.coverImage, {
+      width: 1200,
+      height: 630,
+      quality: 85,
+    }) ||
+    getSanityImageUrl(settings.ogImage, {
+      width: 1200,
+      height: 630,
+      quality: 85,
+    });
+
+  return {
+    title: venture.name,
+    description,
+    alternates: {
+      canonical: `/ventures/${venture.slug}`,
+    },
+    openGraph: {
+      type: "website",
+      locale: "id_ID",
+      siteName: settings.brandName,
+      title,
+      description,
+      url: `/ventures/${venture.slug}`,
+      ...(ogImageUrl
+        ? {
+            images: [
+              {
+                url: ogImageUrl,
+                width: 1200,
+                height: 630,
+                alt: venture.coverImage?.alt || venture.name,
+              },
+            ],
+          }
+        : {}),
+    },
+    twitter: {
+      card: ogImageUrl ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(ogImageUrl ? { images: [ogImageUrl] } : {}),
+    },
+  };
 }
 
 function splitEditorialTitle(name: string): {
