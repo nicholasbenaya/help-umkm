@@ -16,6 +16,8 @@ node_modules/
 # Next.js & Frontend Build Outputs
 .next/
 **/.next/
+next-env.d.ts
+**/next-env.d.ts
 out/
 **/out/
 build/

@@ -8,6 +8,8 @@ interface RevalidatePayload {
   slug?: string | { current?: string };
 }
 
+const VALID_SLUG_REGEX = /^[a-z0-9-]+$/i;
+
 function constantTimeEquals(a: string, b: string): boolean {
   const bufA = Buffer.from(a);
   const bufB = Buffer.from(b);
@@ -31,18 +33,24 @@ function extractDirectSecret(req: NextRequest): string | null {
     }
   }
 
-  const querySecret = req.nextUrl.searchParams.get("secret")?.trim();
-  return querySecret || null;
+  return null;
 }
 
-function extractSlug(payload: RevalidatePayload | null): string | null {
+function extractValidatedSlug(payload: RevalidatePayload | null): string | null {
   if (!payload?.slug) {
     return null;
   }
-  if (typeof payload.slug === "string") {
-    return payload.slug.trim() || null;
+
+  const candidate =
+    typeof payload.slug === "string"
+      ? payload.slug.trim()
+      : payload.slug.current?.trim() || "";
+
+  if (!candidate || !VALID_SLUG_REGEX.test(candidate)) {
+    return null;
   }
-  return payload.slug.current?.trim() || null;
+
+  return candidate;
 }
 
 export async function POST(req: NextRequest) {
@@ -60,14 +68,27 @@ export async function POST(req: NextRequest) {
   );
 
   if (hasSanitySignature) {
-    const parsed = await parseBody<RevalidatePayload>(req, secret, true);
-    if (!parsed.isValidSignature) {
+    try {
+      const parsed = await parseBody<RevalidatePayload>(req, secret, true);
+      if (!parsed.isValidSignature) {
+        return NextResponse.json(
+          { revalidated: false, message: "Invalid webhook signature." },
+          { status: 401 },
+        );
+      }
+      payload = parsed.body;
+    } catch (error) {
+      const isJsonSyntaxError = error instanceof SyntaxError;
       return NextResponse.json(
-        { revalidated: false, message: "Invalid webhook signature." },
-        { status: 401 },
+        {
+          revalidated: false,
+          message: isJsonSyntaxError
+            ? "Invalid JSON payload."
+            : "Invalid webhook signature.",
+        },
+        { status: isJsonSyntaxError ? 400 : 401 },
       );
     }
-    payload = parsed.body;
   } else {
     const providedSecret = extractDirectSecret(req);
     if (!providedSecret || !constantTimeEquals(providedSecret, secret)) {
@@ -89,7 +110,7 @@ export async function POST(req: NextRequest) {
   }
 
   const documentType = payload?._type;
-  const slug = extractSlug(payload);
+  const slug = extractValidatedSlug(payload);
   const revalidatedTags: string[] = [];
 
   if (documentType === "siteSettings") {
