@@ -7,7 +7,7 @@
 | **Visual Language** | Blush Editorial Gallery (light warm porcelain ground, soft petal-blush studio plates, sharp photography, high-contrast serif + italic rose accent) |
 | **Dial** | `ENERGY 2 / RHYTHM 3 / MOTION 1` |
 | **Theme** | Fixed Light Editorial (justified: floristry petals and MUA skin tones require accurate, bright neutral-blush viewing; dark surfaces distort color perception) |
-| **Figma URLs** | `PENDING (to be populated during Phase 1 task P1-T02)` |
+| **Figma URLs** | [Nadia Collection: Design Exploration (Option 1 & Option 2)](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo) *(see Section 7 for direct frame links)* |
 
 ---
 
@@ -212,6 +212,29 @@ Both fonts are natively available in **Figma** and **`next/font/google`** so Fig
 ## 7. Blueprint for Phase 1 Figma Exploration (2 Options to Compare)
 
 Design Agent must create **two clearly labeled pages** inside the Figma file (`Option 1: Single-Page Hub` and `Option 2: Hub + Venture Pages`), each with **Desktop (`1440px`)** and **Mobile (`390px`)** frames (plus Tablet `768px` grid note/frame for showcase reflow), so Nadia can review and select **one** final direction before Phase 3 coding.
+
+### Completed Figma File & Direct Frame Links (`P1-T02`)
+
+- **Master Figma File:** [Nadia Collection: Design Exploration (Option 1 & Option 2)](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo)
+
+| Page / Deliverable | Viewport | Direct Figma Link |
+| :--- | :--- | :--- |
+| **Foundations & Components** (Tokens, Type Ramp, 3 SVG Logos, CTAs) | 1320px Board | [Open Foundations Board](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=3-16) |
+| **Option 1: Single-Page Hub (`/`)** | Desktop (`1440px`) | [Open Option 1 Desktop](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-2) |
+| **Option 1: Single-Page Hub (`/`)** | Mobile (`390px`) | [Open Option 1 Mobile](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-243) |
+| **Shared Pattern: Showcase Lightbox Modal** | Desktop (`1440px`) | [Open Lightbox Modal Preview](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-369) |
+| **Option 2A: Personal Hub (`/`)** | Desktop (`1440px`) | [Open Option 2A Hub Desktop](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-391) |
+| **Option 2A: Personal Hub (`/`)** | Mobile (`390px`) | [Open Option 2A Hub Mobile](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-536) |
+| **Option 2B: Venture Detail (`/ventures/afisa-bouquet`)** | Desktop (`1440px`) | [Open Option 2B Afisa Desktop](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-600) |
+| **Option 2B: Venture Detail (`/ventures/nadia-artistry`)** | Desktop (`1440px`) | [Open Option 2B MUA Desktop](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-799) |
+| **Option 2B: Venture Detail (Template)** | Mobile (`390px`) | [Open Option 2B Detail Mobile](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-979) |
+
+### Placeholder Brand Logo SVG Assets (`nadia-collection/public/logos/`)
+
+All three minimal placeholder logos are committed in `nadia-collection/public/logos/` using `#1F171A` (Deep Espresso Plum) and `#9E3B5A` (Deep Editorial Rose) on transparent backgrounds, ready as CMS fallbacks until Nadia uploads custom logos via Sanity Studio (`/studio`):
+- `nadia-collection/public/logos/nadia-collection-logo.svg`
+- `nadia-collection/public/logos/afisa-bouquet-logo.svg`
+- `nadia-collection/public/logos/nadia-artistry-logo.svg`
 
 ### Option 1: Single-Page Personal Hub (`/`)
 Compositional flow designed for `RHYTHM 3` (no two consecutive sections share the same layout):
