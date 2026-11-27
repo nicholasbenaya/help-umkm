@@ -1,6 +1,6 @@
 'use client';
 
-import { X, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { X, CheckCircle2 } from 'lucide-react';
 import { useEffect } from 'react';
 
 export default function LightboxModal({ isOpen, onClose, item, settings, type = 'bouquet' }) {
@@ -48,32 +48,33 @@ export default function LightboxModal({ isOpen, onClose, item, settings, type = 
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm transition-opacity duration-200"
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-white/20 transition-transform transform scale-100"
+        className="relative w-full max-w-2xl max-h-[90dvh] overflow-y-auto bg-white rounded-3xl shadow-2xl border border-[#EEDADE]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Close Button: 44x44px tap target per antislop-layoutmobile */}
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-[#1D1D1F]/70 hover:bg-[#1D1D1F] text-white flex items-center justify-center backdrop-blur-md transition-colors"
-          aria-label="Tutup"
+          className="absolute top-3 right-3 z-20 w-11 h-11 rounded-full bg-[#231B1E]/80 hover:bg-[#231B1E] text-white flex items-center justify-center transition-colors focus-visible:ring-2 focus-visible:ring-[#C26B76]"
+          aria-label="Tutup rincian"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5" />
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Image */}
-          <div className="relative aspect-square md:aspect-auto bg-[#F5F5F7]">
+          <div className="relative aspect-square md:aspect-auto bg-[#FAF6F7]">
             <img 
               src={item.image} 
               alt={title}
               className="w-full h-full object-cover" 
             />
             {item.tag && (
-              <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[11px] font-semibold text-[#1D1D1F] px-2.5 py-1 rounded-full shadow-sm">
+              <span className="absolute top-4 left-4 bg-white/95 text-[11px] font-semibold text-[#231B1E] px-2.5 py-1 rounded-full shadow-sm">
                 {item.tag}
               </span>
             )}
@@ -82,27 +83,31 @@ export default function LightboxModal({ isOpen, onClose, item, settings, type = 
           {/* Details */}
           <div className="p-6 md:p-8 flex flex-col justify-between">
             <div>
-              <span className="text-[11px] uppercase tracking-wider text-[#86868B] font-medium">
+              <span className="text-[11px] uppercase tracking-wider text-[#C26B76] font-semibold">
                 {item.categoryLabel || item.category || 'Koleksi Studio'}
               </span>
-              <h3 className="font-semibold text-xl text-[#1D1D1F] tracking-tight mt-1">
+              <h3 className="font-semibold text-xl text-[#231B1E] tracking-tight mt-1">
                 {title}
               </h3>
               {price && (
-                <div className="mt-2 text-lg font-bold text-[#1D1D1F]">
+                <div className="mt-2 text-sm font-semibold text-[#C26B76]">
                   {price}
                 </div>
               )}
 
-              <p className="mt-4 text-xs text-[#86868B] leading-relaxed">
-                {item.description || 'Pengerjaan teliti handmade dengan bahan berkualitas tinggi dan perhatian penuh pada detail keindahan.'}
+              <p className="mt-4 text-xs text-[#635256] leading-relaxed">
+                {item.description || 'Pengerjaan buatan tangan dengan bahan berkualitas rapi.'}
               </p>
 
-              {item.highlights && item.highlights.length > 0 && (
-                <div className="mt-5 space-y-1.5 border-t border-[#E5E5EA] pt-4">
+              {/* Highlights */}
+              {Array.isArray(item.highlights) && item.highlights.length > 0 && (
+                <div className="mt-5 space-y-2">
+                  <span className="text-[10px] font-semibold text-[#231B1E] uppercase tracking-wider block">
+                    Keunggulan:
+                  </span>
                   {item.highlights.map((h, i) => (
-                    <div key={i} className="flex items-center gap-2 text-[11px] text-[#1D1D1F]">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                    <div key={i} className="flex items-center gap-2 text-xs text-[#635256]">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C26B76] flex-shrink-0" />
                       <span>{h}</span>
                     </div>
                   ))}
@@ -110,20 +115,16 @@ export default function LightboxModal({ isOpen, onClose, item, settings, type = 
               )}
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#E5E5EA]">
+            <div className="mt-8 pt-4 border-t border-[#F0E2E5]">
               <a
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleOrderClick}
-                className="w-full py-3 px-4 bg-[#1D1D1F] hover:bg-[#000000] text-white text-xs font-semibold rounded-full flex items-center justify-center gap-2 shadow-sm transition-all active:scale-98"
+                className="w-full min-h-[44px] py-3 bg-[#231B1E] hover:bg-[#C26B76] text-white rounded-full text-xs font-semibold flex items-center justify-center transition-all shadow-sm"
               >
-                <span>Tanya / Pesan via WhatsApp</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-emerald-400" />
+                Tanya Ketersediaan via WhatsApp
               </a>
-              <p className="text-[10px] text-center text-[#86868B] mt-2">
-                Pemesanan diproses langsung oleh Nadia di Samarinda
-              </p>
             </div>
           </div>
         </div>

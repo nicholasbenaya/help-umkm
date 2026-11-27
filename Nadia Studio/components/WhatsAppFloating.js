@@ -6,8 +6,14 @@ import { usePathname } from 'next/navigation';
 export default function WhatsAppFloating({ settings }) {
   const pathname = usePathname();
 
-  // Don't show in admin area
-  if (pathname.startsWith('/admin') || pathname.startsWith('/studio-admin')) return null;
+  // Jangan tampilkan di halaman kelola internal
+  if (
+    pathname.startsWith('/admin') || 
+    pathname.startsWith('/studio-admin') || 
+    pathname.startsWith('/kelola-studio')
+  ) {
+    return null;
+  }
 
   const phone = settings?.whatsappNumber || '6282154309113';
 
@@ -18,8 +24,8 @@ export default function WhatsAppFloating({ settings }) {
     defaultMsg = 'Halo Nadia & Afisa Bouquet, saya ingin bertanya / pesan buket untuk acara tanggal [isi tanggal]. Apakah ada slot?';
     label = 'Pesan Buket';
   } else if (pathname.startsWith('/makeup-artist')) {
-    defaultMsg = 'Halo Nadia Artistry, saya ingin tanya ketersediaan jadwal rias untuk acara [Wisuda/Lamaran/Wedding] pada tanggal [isi tanggal].';
-    label = 'Booking MUA';
+    defaultMsg = 'Halo Nadia Artistry, saya ingin tanya ketersediaan jadwal rias untuk acara [Wisuda/Lamaran/Wedding/Pelatihan] pada tanggal [isi tanggal].';
+    label = 'Tanya MUA';
   }
 
   const handleClick = () => {
@@ -44,15 +50,11 @@ export default function WhatsAppFloating({ settings }) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      aria-label="Chat WhatsApp"
-      className="fixed bottom-6 right-6 z-40 bg-[#1D1D1F] hover:bg-[#000000] text-white py-2.5 px-4 rounded-full shadow-lg border border-white/20 flex items-center gap-2.5 transition-all duration-300 hover:scale-105 active:scale-95 group"
+      aria-label={`Chat WhatsApp Nadia Studio: ${label}`}
+      className="fixed bottom-6 right-6 z-40 min-h-[44px] min-w-[44px] bg-[#231B1E] hover:bg-[#C26B76] text-white py-2.5 px-4 rounded-full shadow-lg border border-white/20 flex items-center gap-2 transition-all duration-200 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-[#C26B76]"
     >
-      <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-      </span>
       <MessageCircle className="w-4 h-4 text-emerald-400" />
-      <span className="text-xs font-medium tracking-tight text-white/95">
+      <span className="text-xs font-medium tracking-tight text-white">
         {label}
       </span>
     </a>

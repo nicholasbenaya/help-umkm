@@ -14,7 +14,7 @@ module.exports = {
           dark: '#1D1D1F',
           black: '#000000',
           card: '#FFFFFF',
-          muted: '#86868B',
+          muted: '#555555',
           border: '#E5E5EA',
           borderDark: '#333336',
           blue: '#0071E3',
@@ -23,8 +23,14 @@ module.exports = {
         studio: {
           gold: '#9A7B4F',
           goldLight: '#F7F3EE',
-          rose: '#B86A73',
-          roseLight: '#FAF0F2'
+          rose: '#C26B76',
+          roseDark: '#9E4E58',
+          roseLight: '#FDF1F3',
+          blush: '#FDF8F9',
+          blushSurface: '#FFFFFF',
+          blushBorder: '#EEDADE',
+          espresso: '#231B1E',
+          mutedMauve: '#635256'
         }
       },
       fontFamily: {

@@ -116,22 +116,22 @@ const MAKEUP_PACKAGES = [
   }
 ];
 
-// Customer Testimonials
+// Studio Standards Data
 const MAKEUP_TESTIMONIALS = [
   {
-    name: 'Adelia Putri, S.Farm',
-    role: 'Wisudawati Universitas Mulawarman',
-    text: 'Makeup wisudaku tahan dari subuh jam 5 sampai sore jam 4! Panas-panasan foto di luar gedung sama sekali nggak cakey ataupun luntur. Ditambah buket wisuda dari Afisa Bouquet juga serasi banget. Puas banget!'
+    name: 'Home Service Samarinda',
+    role: 'Layanan ke Alamat Klien',
+    text: 'Perias datang langsung ke alamat rumah atau lokasi acara di Kota Samarinda sehingga Anda tidak perlu terburu-buru di pagi hari acara.'
   },
   {
-    name: 'Nabila Zahra',
-    role: 'Klien Lamaran / Engagement',
-    text: 'Kak Nadia teliti banget pas ngerjain complexion. Hasilnya bener-bener halus dan flawless, banyak keluarga yang muji riasannya pangling tapi tetap natural. Makasih banyak Kak Nadia!'
+    name: 'Peralatan Bersih & Higienis',
+    role: 'Standar Kebersihan',
+    text: 'Semua kuas, spons, dan alat rias dibersihkan serta disterilkan secara berkala untuk kenyamanan dan keamanan kulit Anda.'
   },
   {
-    name: 'Vivi Andriani',
-    role: 'Bridesmaid & Party Event',
-    text: 'Hairdo dan makeup-nya rapi banget. Produk yang dipakai higienis dan wangi. Bakal selalu jadi langganan setiap ada acara penting!'
+    name: 'Konsultasi Gaya Rias',
+    role: 'Persiapan Sebelum Hari H',
+    text: 'Bebas berkonsultasi mengenai gaya riasan dan kecocokan warna dengan kebaya atau busana yang akan dikenakan.'
   }
 ];
 

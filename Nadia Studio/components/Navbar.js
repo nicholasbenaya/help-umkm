@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar({ settings }) {
   const pathname = usePathname();
@@ -32,59 +32,59 @@ export default function Navbar({ settings }) {
     <>
       {/* Top subtle announcement if active */}
       {settings?.isAnnouncementActive && settings?.announcement && (
-        <div className="bg-[#1D1D1F] text-[#F5F5F7] text-[11px] sm:text-xs py-2 px-4 text-center font-normal tracking-tight">
+        <div className="bg-[#231B1E] text-[#FDF8F9] text-[11px] sm:text-xs py-2 px-4 text-center font-normal tracking-tight">
           <div className="max-w-6xl mx-auto flex items-center justify-center gap-2">
             <span>{settings.announcement}</span>
             <Link 
               href="/afisabouquet" 
-              className="text-[#0071E3] hover:underline inline-flex items-center gap-0.5 ml-1"
+              className="text-[#C26B76] hover:underline font-medium ml-1"
             >
-              Lihat Katalog <ArrowUpRight className="w-3 h-3" />
+              Lihat Katalog
             </Link>
           </div>
         </div>
       )}
 
       <header className="sticky top-0 z-40 apple-glass">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-13 py-3 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-7 h-7 rounded-full bg-[#1D1D1F] text-white flex items-center justify-center font-serif text-sm font-semibold tracking-tighter">
+            <div className="w-8 h-8 rounded-full bg-[#C26B76] text-white flex items-center justify-center font-serif text-sm font-semibold tracking-tighter shadow-sm">
               N
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-xs tracking-tight text-[#1D1D1F]">
+              <span className="font-semibold text-xs tracking-tight text-[#231B1E]">
                 NADIA STUDIO
               </span>
-              <span className="text-[9px] text-[#86868B] tracking-wider uppercase">
-                Creative Ventures
+              <span className="text-[10px] text-[#635256] tracking-wide">
+                Buket &amp; Rias Samarinda
               </span>
             </div>
           </Link>
 
-          {/* Center Navigation Links (Apple-style minimal) */}
-          <nav className="hidden md:flex items-center gap-8 text-[13px] text-[#1D1D1F]/70">
+          {/* Center Navigation Links */}
+          <nav className="hidden md:flex items-center gap-8 text-[13px] text-[#231B1E]/80">
             <Link 
               href="/" 
-              className={`transition-colors hover:text-[#1D1D1F] ${pathname === '/' ? 'text-[#1D1D1F] font-semibold' : ''}`}
+              className={`transition-colors hover:text-[#C26B76] ${pathname === '/' ? 'text-[#C26B76] font-semibold' : ''}`}
             >
-              Overview
+              Beranda
             </Link>
 
             <Link 
               href="/afisabouquet" 
-              className={`transition-colors hover:text-[#1D1D1F] flex items-center gap-1.5 ${pathname.startsWith('/afisabouquet') ? 'text-[#1D1D1F] font-semibold' : ''}`}
+              className={`transition-colors hover:text-[#C26B76] flex items-center gap-1.5 ${pathname.startsWith('/afisabouquet') ? 'text-[#C26B76] font-semibold' : ''}`}
             >
               <span>Afisa Bouquet</span>
-              <span className="text-[10px] bg-[#FAF0F2] text-[#B86A73] px-1.5 py-0.2 rounded font-medium">
-                by Nadia & Afisa
+              <span className="text-[10px] bg-[#FFF0F2] text-[#C26B76] px-1.5 py-0.5 rounded font-medium">
+                by Nadia &amp; Afisa
               </span>
             </Link>
 
             <Link 
               href="/makeup-artist" 
-              className={`transition-colors hover:text-[#1D1D1F] flex items-center gap-1.5 ${pathname.startsWith('/makeup-artist') ? 'text-[#1D1D1F] font-semibold' : ''}`}
+              className={`transition-colors hover:text-[#C26B76] flex items-center gap-1.5 ${pathname.startsWith('/makeup-artist') ? 'text-[#C26B76] font-semibold' : ''}`}
             >
               <span>Nadia Artistry (MUA)</span>
             </Link>
@@ -97,52 +97,53 @@ export default function Navbar({ settings }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWaClick('desktop')}
-              className="text-xs bg-[#1D1D1F] hover:bg-[#000000] text-white font-medium px-4 py-1.5 rounded-full transition-all flex items-center gap-1.5 shadow-sm"
+              className="text-xs bg-[#231B1E] hover:bg-[#C26B76] text-white font-medium px-5 py-2.5 rounded-full transition-all shadow-sm"
             >
-              <span>Hubungi WA</span>
-              <ArrowUpRight className="w-3 h-3 text-emerald-400" />
+              Hubungi WhatsApp
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button: Labeled and >= 44x44px per antislop-layoutmobile */}
           <button 
+            type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-1.5 text-[#1D1D1F] rounded-lg hover:bg-black/5"
-            aria-label="Toggle navigation"
+            className="md:hidden flex items-center gap-1.5 min-h-[44px] min-w-[44px] px-3 py-2 text-[#231B1E] rounded-xl hover:bg-[#FFF5F6] border border-[#EEDADE] transition-colors"
+            aria-label={mobileOpen ? 'Tutup navigasi' : 'Buka menu navigasi'}
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? <X className="w-5 h-5 text-[#C26B76]" /> : <Menu className="w-5 h-5 text-[#231B1E]" />}
+            <span className="text-xs font-semibold">{mobileOpen ? 'Tutup' : 'Menu'}</span>
           </button>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile Dropdown with 44px tap targets */}
         {mobileOpen && (
-          <div className="md:hidden border-t border-[#E5E5EA] bg-white/95 backdrop-blur-xl px-5 py-5 space-y-4">
+          <div className="md:hidden border-t border-[#EEDADE] bg-white px-5 py-4 space-y-2 shadow-lg">
             <Link 
               href="/" 
               onClick={() => setMobileOpen(false)}
-              className="block text-sm font-medium text-[#1D1D1F] py-1"
+              className="flex items-center min-h-[44px] text-sm font-medium text-[#231B1E] px-2 rounded-lg hover:bg-[#FFF5F6]"
             >
-              Overview
+              Beranda
             </Link>
             <Link 
               href="/afisabouquet" 
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-between text-sm font-medium text-[#1D1D1F] py-1"
+              className="flex items-center justify-between min-h-[44px] text-sm font-medium text-[#231B1E] px-2 rounded-lg hover:bg-[#FFF5F6]"
             >
               <span>Afisa Bouquet</span>
-              <span className="text-[10px] bg-[#FAF0F2] text-[#B86A73] px-2 py-0.5 rounded font-semibold">
-                by Nadia & Afisa
+              <span className="text-[10px] bg-[#FFF0F2] text-[#C26B76] px-2 py-0.5 rounded font-semibold">
+                by Nadia &amp; Afisa
               </span>
             </Link>
             <Link 
               href="/makeup-artist" 
               onClick={() => setMobileOpen(false)}
-              className="block text-sm font-medium text-[#1D1D1F] py-1"
+              className="flex items-center min-h-[44px] text-sm font-medium text-[#231B1E] px-2 rounded-lg hover:bg-[#FFF5F6]"
             >
               Nadia Artistry (MUA)
             </Link>
 
-            <div className="pt-3 border-t border-[#E5E5EA]">
+            <div className="pt-3 border-t border-[#EEDADE]">
               <a
                 href={waUrl}
                 target="_blank"
@@ -151,10 +152,9 @@ export default function Navbar({ settings }) {
                   trackWaClick('mobile');
                   setMobileOpen(false);
                 }}
-                className="w-full py-2.5 bg-[#1D1D1F] text-white rounded-xl text-center text-xs font-semibold flex items-center justify-center gap-2 shadow-sm"
+                className="w-full min-h-[44px] bg-[#231B1E] hover:bg-[#C26B76] text-white rounded-xl text-center text-xs font-semibold flex items-center justify-center shadow-sm transition-colors"
               >
-                <span>Chat WhatsApp ({displayPhone})</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-emerald-400" />
+                Chat WhatsApp ({displayPhone})
               </a>
             </div>
           </div>

@@ -1,7 +1,5 @@
-'use client';
-
-import AdminPage from '../admin/page';
+import { notFound } from 'next/navigation';
 
 export default function StudioAdminRoute() {
-  return <AdminPage />;
+  notFound();
 }

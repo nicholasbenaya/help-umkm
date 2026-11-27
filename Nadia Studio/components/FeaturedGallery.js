@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowUpRight, Eye, Sparkles, Heart, CheckCircle2 } from 'lucide-react';
+import { Eye, Heart, MessageCircle } from 'lucide-react';
 import LightboxModal from '@/components/LightboxModal';
 
 export default function FeaturedGallery({ bouquets = [], makeupLooks = [], settings }) {
@@ -48,7 +48,7 @@ export default function FeaturedGallery({ bouquets = [], makeupLooks = [], setti
     const phone = settings?.whatsappNumber || '6282154309113';
     const msg = item.itemType === 'bouquet'
       ? `Halo Nadia & Afisa Bouquet, saya sangat tertarik dengan karya favorit "${item.title}" (${item.price || ''}). Apakah ada slot untuk tanggal [isi tanggal]?`
-      : `Halo Nadia Artistry, saya tertarik dengan look favorit "${item.title}". Apakah bisa request look ini untuk tanggal [isi tanggal]?`;
+      : `Halo Nadia Artistry, saya tertarik dengan look favorit "${item.title}". Apakah bisa konsultasi jadwal untuk tanggal [isi tanggal]?`;
     
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
@@ -56,139 +56,134 @@ export default function FeaturedGallery({ bouquets = [], makeupLooks = [], setti
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6">
       
-      {/* SECTION HEADER - APPLE EDITORIAL */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-[#E5E5EA]">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-[#EEDADE]">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-[#86868B] mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>Curated Studio Highlights</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#1D1D1F]">
-            Galeri Karya Terfavorit.
+          <span className="text-[11px] font-semibold uppercase tracking-widest text-[#C26B76] block mb-1">
+            Galeri Pilihan Studio
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#231B1E]">
+            Karya Pilihan Studio
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-[#86868B] max-w-xl leading-relaxed">
-            Rangkaian buket paling diminati dan kreasi riasan wajah yang paling sering dipesan oleh wisudawati &amp; klien kami di Samarinda.
+          <p className="mt-2 text-xs sm:text-sm text-[#635256] max-w-xl leading-relaxed">
+            Pilihan buket bunga dan hasil riasan yang sering dipesan untuk wisuda, lamaran, dan perayaan di Samarinda.
           </p>
         </div>
 
-        {/* Minimal Category Tabs */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#F5F5F7] rounded-full self-start md:self-auto border border-[#E5E5EA]">
+        {/* Category Tabs: min 44px tap targets */}
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white rounded-full self-start md:self-auto border border-[#EEDADE]">
           <button
+            type="button"
             onClick={() => setActiveTab('all')}
-            className={`text-xs px-4 py-1.5 rounded-full font-medium transition-all ${
+            className={`text-xs px-4 py-2 min-h-[44px] inline-flex items-center justify-center rounded-full font-medium transition-all ${
               activeTab === 'all'
-                ? 'bg-white text-[#1D1D1F] shadow-sm font-semibold'
-                : 'text-[#86868B] hover:text-[#1D1D1F]'
+                ? 'bg-[#231B1E] text-white shadow-sm font-semibold'
+                : 'text-[#635256] hover:text-[#231B1E]'
             }`}
           >
-            Semua Sorotan ({allItems.length})
+            Semua ({allItems.length})
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('bouquets')}
-            className={`text-xs px-4 py-1.5 rounded-full font-medium transition-all ${
+            className={`text-xs px-4 py-2 min-h-[44px] inline-flex items-center justify-center rounded-full font-medium transition-all ${
               activeTab === 'bouquets'
-                ? 'bg-white text-[#1D1D1F] shadow-sm font-semibold'
-                : 'text-[#86868B] hover:text-[#1D1D1F]'
+                ? 'bg-[#231B1E] text-white shadow-sm font-semibold'
+                : 'text-[#635256] hover:text-[#231B1E]'
             }`}
           >
-            Buket Terlaris
+            Buket Bunga
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('makeup')}
-            className={`text-xs px-4 py-1.5 rounded-full font-medium transition-all ${
+            className={`text-xs px-4 py-2 min-h-[44px] inline-flex items-center justify-center rounded-full font-medium transition-all ${
               activeTab === 'makeup'
-                ? 'bg-white text-[#1D1D1F] shadow-sm font-semibold'
-                : 'text-[#86868B] hover:text-[#1D1D1F]'
+                ? 'bg-[#231B1E] text-white shadow-sm font-semibold'
+                : 'text-[#635256] hover:text-[#231B1E]'
             }`}
           >
-            Riasan Favorit
+            Rias Wajah
           </button>
         </div>
       </div>
 
-      {/* EDITORIAL GALLERY GRID (APPLE PRO PHOTO SHOWCASE) */}
+      {/* Gallery Grid: 1 col on mobile, 2 col on tablet, 3 col on desktop */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {displayItems.map((item, index) => {
-          const isFeaturedHero = index === 0;
           return (
             <div
-              key={item.id}
+              key={`${item.id}-${index}`}
+              tabIndex={0}
+              role="button"
               onClick={() => handleOpenDetail(item)}
-              className={`apple-card overflow-hidden cursor-pointer group flex flex-col justify-between transition-all duration-500 hover:shadow-xl ${
-                isFeaturedHero ? 'sm:col-span-2 lg:col-span-2' : ''
-              }`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleOpenDetail(item);
+                }
+              }}
+              aria-label={`Lihat karya ${item.title} dari ${item.studio}`}
+              className="apple-card overflow-hidden group text-left cursor-pointer focus-visible:ring-2 focus-visible:ring-[#C26B76] focus-visible:outline-none flex flex-col justify-between"
             >
-              {/* Media Frame */}
-              <div className={`relative bg-[#F5F5F7] overflow-hidden ${
-                isFeaturedHero ? 'aspect-[16/10] sm:aspect-[16/9]' : 'aspect-[4/3] sm:aspect-[4/4]'
-              }`}>
+              <div className="relative aspect-[4/3] bg-[#FAF6F7] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                   loading="lazy"
                 />
 
-                {/* Subtle dark gradient overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-
-                {/* Top Badges */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-10">
-                  <span className="bg-white/95 backdrop-blur-md text-[#1D1D1F] text-[11px] font-semibold px-3 py-1 rounded-full shadow-sm flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                    {item.tag || 'Favorit'}
-                  </span>
-
-                  <span className="bg-black/40 backdrop-blur-md text-white text-[10px] font-medium px-2.5 py-1 rounded-full border border-white/20">
+                {/* Studio badge */}
+                <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                  <span className="bg-white/95 backdrop-blur-sm text-[#231B1E] text-[10px] font-semibold px-2.5 py-1 rounded-full shadow-sm">
                     {item.studio}
                   </span>
-                </div>
-
-                {/* Bottom Overlay Info (Appears on Image) */}
-                <div className="absolute bottom-4 left-4 right-4 text-white z-10 flex items-end justify-between gap-4">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-white/80 block font-medium">
-                      {item.categoryLabel}
+                  {item.tag && (
+                    <span className="bg-[#231B1E]/90 text-white text-[10px] font-medium px-2 py-0.5 rounded-full shadow-sm">
+                      {item.tag}
                     </span>
-                    <h3 className={`font-semibold tracking-tight text-white mt-0.5 leading-snug drop-shadow-sm ${
-                      isFeaturedHero ? 'text-xl sm:text-2xl' : 'text-base sm:text-lg'
-                    }`}>
-                      {item.title}
-                    </h3>
-                  </div>
-
-                  {item.price && (
-                    <div className="text-right flex-shrink-0">
-                      <span className="block text-[9px] uppercase tracking-wider text-white/70">Mulai</span>
-                      <span className="font-semibold text-xs sm:text-sm text-white drop-shadow-sm">
-                        {item.price}
-                      </span>
-                    </div>
                   )}
                 </div>
 
-                {/* Hover Reveal Quick Action Badge */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <span className="bg-white/95 text-[#1D1D1F] text-xs font-semibold px-4 py-2 rounded-full shadow-lg backdrop-blur-md flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>Lihat Rincian Karya</span>
+                {/* Subtitle / Category badge */}
+                <div className="absolute top-3 right-3">
+                  <span className="bg-white/90 text-[#635256] text-[10px] font-medium px-2 py-0.5 rounded-md shadow-sm">
+                    {item.categoryLabel || item.category}
+                  </span>
+                </div>
+
+                {/* Bottom title inside image overlay */}
+                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 via-black/30 to-transparent text-white">
+                  <h3 className="font-semibold text-base sm:text-lg tracking-tight leading-snug">
+                    {item.title}
+                  </h3>
+                </div>
+
+                {/* Hover Quick Indicator */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  <span className="bg-white text-[#231B1E] text-xs font-semibold px-4 py-2.5 rounded-full shadow-md flex items-center gap-1.5">
+                    <Eye className="w-3.5 h-3.5 text-[#C26B76]" />
+                    <span>Lihat Rincian</span>
                   </span>
                 </div>
               </div>
 
               {/* Card Footer Summary */}
-              <div className="p-5 flex items-center justify-between gap-4 bg-white border-t border-[#E5E5EA]">
-                <p className="text-xs text-[#86868B] line-clamp-1 flex-1">
-                  {item.description || 'Pengerjaan handmade presisi dengan bahan pilihan.'}
+              <div className="p-4 sm:p-5 flex items-center justify-between gap-3 bg-white border-t border-[#F0E2E5]">
+                <p className="text-xs text-[#635256] line-clamp-1 flex-1">
+                  {item.description || 'Pengerjaan handmade dengan bahan pilihan.'}
                 </p>
 
                 <button
+                  type="button"
                   onClick={(e) => handleQuickWa(e, item)}
-                  className="flex-shrink-0 text-xs font-semibold bg-[#F5F5F7] hover:bg-[#1D1D1F] text-[#1D1D1F] hover:text-white px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1"
+                  className="flex-shrink-0 min-h-[44px] text-xs font-semibold bg-[#FAF6F7] hover:bg-[#231B1E] text-[#231B1E] hover:text-white px-4 py-2 rounded-full transition-all flex items-center gap-1.5 border border-[#EEDADE]"
                   title="Tanya ketersediaan slot via WhatsApp"
+                  aria-label={`Tanya slot WhatsApp untuk ${item.title}`}
                 >
+                  <MessageCircle className="w-3.5 h-3.5 text-[#C26B76]" />
                   <span>Tanya WA</span>
-                  <ArrowUpRight className="w-3 h-3 text-emerald-500" />
                 </button>
               </div>
             </div>
@@ -196,18 +191,18 @@ export default function FeaturedGallery({ bouquets = [], makeupLooks = [], setti
         })}
       </div>
 
-      {/* Bottom Proof Metric Banner */}
-      <div className="mt-12 bg-[#F5F5F7] border border-[#E5E5EA] rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      {/* Workshop Note Banner */}
+      <div className="mt-12 bg-white border border-[#EEDADE] rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-rose-500 shadow-sm flex-shrink-0">
-            <Heart className="w-4 h-4 fill-current" />
+          <div className="w-10 h-10 rounded-full bg-[#FFF0F2] flex items-center justify-center text-[#C26B76] shadow-sm flex-shrink-0">
+            <Heart className="w-5 h-5 fill-current" />
           </div>
           <div>
-            <span className="text-xs font-semibold text-[#1D1D1F] block">
-              100% Karya Asli Handmade &bull; Workshop Samarinda
+            <span className="text-xs font-semibold text-[#231B1E] block">
+              Karya Buatan Tangan &bull; Workshop Samarinda
             </span>
-            <span className="text-[11px] text-[#86868B]">
-              Semua buket dan riasan dikerjakan langsung oleh Nadia &amp; Afisa. Bukan barang pabrikan massal.
+            <span className="text-[11px] text-[#635256]">
+              Dikerjakan langsung oleh Nadia &amp; Afisa di workshop Jl. Revolusi, Samarinda.
             </span>
           </div>
         </div>
@@ -217,14 +212,14 @@ export default function FeaturedGallery({ bouquets = [], makeupLooks = [], setti
             href={settings?.instagramAfisa || 'https://www.instagram.com/afisabouquet/'}
             target="_blank"
             rel="noopener noreferrer"
-            className="apple-link text-xs"
+            className="apple-link text-xs hover:underline"
           >
-            Feed IG @afisabouquet ↗
+            Instagram @afisabouquet
           </a>
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Detail Modal */}
       <LightboxModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

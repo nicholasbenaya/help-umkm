@@ -3,77 +3,81 @@
 @tailwind utilities;
 
 :root {
-  --apple-bg: #F5F5F7;
-  --apple-dark: #1D1D1F;
-  --apple-muted: #86868B;
-  --apple-border: #E5E5EA;
-  --apple-blue: #0071E3;
+  --studio-bg: #FCF8F9;
+  --studio-dark: #231B1E;
+  --studio-muted: #635256;
+  --studio-border: #EEDADE;
+  --studio-rose: #C26B76;
+  --studio-rose-hover: #A7535E;
 }
 
 body {
-  background-color: #FFFFFF;
-  color: #1D1D1F;
+  background-color: #FAF6F7;
+  color: #231B1E;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
 }
 
-/* Apple-style Frosted Glass Navigation */
+:focus-visible {
+  outline: 2px solid #C26B76;
+  outline-offset: 2px;
+}
+
+/* Frosted Glass Navigation with Subtle Pinkish Tint */
 .apple-glass {
-  background-color: rgba(255, 255, 255, 0.82);
+  background-color: rgba(253, 248, 249, 0.88);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(194, 107, 118, 0.12);
 }
 
 .apple-glass-dark {
-  background-color: rgba(29, 29, 31, 0.88);
+  background-color: rgba(35, 27, 30, 0.92);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Hairline dividers & cards */
 .apple-card {
   background-color: #FFFFFF;
-  border: 1px solid #E5E5EA;
-  border-radius: 18px;
+  border: 1px solid #EEDADE;
+  border-radius: 20px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(194, 107, 118, 0.08);
 }
 
-/* Subtle Apple link styling */
+/* Subtle link styling */
 .apple-link {
-  color: #0071E3;
+  color: #C26B76;
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.875rem;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .apple-link:hover {
-  text-decoration: underline;
+  color: #A7535E;
 }
 
-/* Minimalist Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #FCF8F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D2D2D7;
-  border-radius: 3px;
+  background: #D8BDC2;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #86868B;
+  background: #C26B76;
 }

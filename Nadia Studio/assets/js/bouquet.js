@@ -33,7 +33,7 @@ const BOUQUET_PRODUCTS = [
     categoryLabel: 'Money Bouquet',
     price: 'Jasa Mulai Rp 75.000 (+ isi)',
     tag: 'Trending',
-    image: 'https://images.unsplash.com/photo-1599730198590-b5305106d6e1?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
     description: 'Buket uang asli (nominal sesuai request) disusun rapi tanpa merusak uang kertas, dipadukan bunga hiasan kawat bulu & ornamen kupu-kupu bercahaya LED.',
     highlights: ['Uang 100% aman (tanpa staples/lem)', 'Bisa tambah lampu LED', 'Request 10 - 50+ lembar']
   },
@@ -94,25 +94,25 @@ const BOUQUET_PRODUCTS = [
   }
 ];
 
-// Customer Testimonials Data
+// Studio Notes Data
 const BOUQUET_TESTIMONIALS = [
   {
-    name: 'Dinda Rahmawati',
-    occasion: 'Wisuda Unmul Samarinda',
+    name: 'Pengerjaan Buatan Tangan',
+    occasion: 'Workshop Samarinda',
     rating: 5,
-    text: 'Buket satinnya rapi banget dan bunganya awet banget! Pas foto wisuda warnanya keluar banget dan dapat pujian dari teman-teman. Makasih Kak Nadia & Kak Afisa! ❤️'
+    text: 'Setiap buket dirangkai teliti oleh Nadia & Afisa di workshop Samarinda menggunakan bahan satin atau kawat bulu pilihan.'
   },
   {
-    name: 'Rian Saputra',
-    occasion: 'Hadiah Anniversary',
+    name: 'Uang Aman & Utuh',
+    occasion: 'Money Bouquet',
     rating: 5,
-    text: 'Pesan buket uang + bunga kawat bulu H-1, pengerjaannya cepat dan hasilnya rapi tanpa lecek sedikitpun. Pacar saya suka banget. Recommended florist di Samarinda!'
+    text: 'Pada buket uang kertas asli, setiap lembar dilindungi plastik bening tanpa lem atau staples sehingga uang tetap utuh saat dibongkar.'
   },
   {
-    name: 'Siti Nurhaliza',
-    occasion: 'Sidang Sempro',
+    name: 'Gratis Kartu Ucapan',
+    occasion: 'Layanan Tambahan',
     rating: 5,
-    text: 'Suka banget sama wrapping-nya yang tebal dan warnanya matching. Free kartu ucapannya juga ditulis tangan dengan estetik. Bakal langganan terus kalau ada acara!'
+    text: 'Setiap pemesanan buket sudah dilengkapi kartu ucapan gratis. Teks ucapan dapat Anda tentukan saat melakukan konfirmasi pesanan.'
   }
 ];
 
