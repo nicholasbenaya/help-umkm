@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { SiteSettings, Venture } from "@/lib/sanity/types";
+import { sanitizeExternalUrl } from "@/lib/url";
 import {
   buildGeneralWhatsAppUrl,
   formatWhatsappDisplay,
@@ -13,9 +14,21 @@ import { WhatsAppButton } from "./WhatsAppButton";
 interface FooterProps {
   settings: SiteSettings;
   ventures: Venture[];
+  currentYear: number;
 }
 
-export function Footer({ settings, ventures }: FooterProps) {
+function isInstagramLink(platform: string, url: string): boolean {
+  if (platform.trim().toLowerCase().includes("instagram")) {
+    return true;
+  }
+  try {
+    return new URL(url).hostname.toLowerCase().includes("instagram.com");
+  } catch {
+    return false;
+  }
+}
+
+export function Footer({ settings, ventures, currentYear }: FooterProps) {
   const pathname = usePathname();
 
   if (pathname?.startsWith("/studio")) {
@@ -24,7 +37,16 @@ export function Footer({ settings, ventures }: FooterProps) {
 
   const whatsappHref = buildGeneralWhatsAppUrl(settings);
   const formattedPhone = formatWhatsappDisplay(settings.defaultWhatsappNumber);
-  const currentYear = new Date().getFullYear();
+
+  const validSocialLinks = settings.socialLinks
+    .map((social) => ({
+      ...social,
+      safeUrl: sanitizeExternalUrl(social.url),
+    }))
+    .filter(
+      (social): social is typeof social & { safeUrl: string } =>
+        Boolean(social.safeUrl),
+    );
 
   return (
     <footer className="border-t border-border-hairline bg-bg-canvas">
@@ -77,40 +99,61 @@ export function Footer({ settings, ventures }: FooterProps) {
               </ul>
             </div>
 
-            {settings.socialLinks.length > 0 ? (
+            {validSocialLinks.length > 0 ? (
               <div>
                 <p className="type-micro uppercase text-accent-rose">
-                  Instagram &amp; Sosial
+                  Media Sosial
                 </p>
                 <ul className="mt-3 space-y-1">
-                  {settings.socialLinks.map((social) => (
-                    <li key={social._key || social.url}>
-                      <a
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex min-h-[44px] items-center gap-2 type-meta text-ink-primary transition-colors duration-[180ms] ease-out hover:text-accent-rose"
-                      >
-                        <svg
-                          width="15"
-                          height="15"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.25"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden="true"
-                          className="shrink-0"
+                  {validSocialLinks.map((social) => {
+                    const isInstagram = isInstagramLink(
+                      social.platform,
+                      social.safeUrl,
+                    );
+                    return (
+                      <li key={social._key || social.safeUrl}>
+                        <a
+                          href={social.safeUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-[44px] items-center gap-2 type-meta text-ink-primary transition-colors duration-[180ms] ease-out hover:text-accent-rose"
                         >
-                          <rect x="2" y="2" width="20" height="20" rx="5" />
-                          <circle cx="12" cy="12" r="4" />
-                          <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" />
-                        </svg>
-                        <span>{social.label}</span>
-                      </a>
-                    </li>
-                  ))}
+                          {isInstagram ? (
+                            <svg
+                              width="15"
+                              height="15"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.25"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              aria-hidden="true"
+                              className="shrink-0"
+                            >
+                              <rect x="2" y="2" width="20" height="20" rx="5" />
+                              <circle cx="12" cy="12" r="4" />
+                              <circle
+                                cx="17.5"
+                                cy="6.5"
+                                r="0.75"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          ) : null}
+                          <span>{social.label}</span>
+                          {!isInstagram ? (
+                            <span
+                              aria-hidden="true"
+                              className="text-[13px] text-ink-secondary"
+                            >
+                              ↗
+                            </span>
+                          ) : null}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ) : null}
@@ -128,7 +171,7 @@ export function Footer({ settings, ventures }: FooterProps) {
             <div className="pt-1">
               <WhatsAppButton
                 href={whatsappHref}
-                label="Hubungi Nadia via WhatsApp"
+                label={`Hubungi ${settings.founderName} via WhatsApp`}
                 variant="primary"
               />
             </div>
