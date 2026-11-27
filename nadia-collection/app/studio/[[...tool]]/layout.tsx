@@ -6,7 +6,9 @@ import {
 
 export const metadata: Metadata = {
   ...studioMetadata,
-  title: "Nadia Collection Studio",
+  title: {
+    absolute: "Nadia Collection Studio",
+  },
   robots: {
     index: false,
     follow: false,

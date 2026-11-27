@@ -18,6 +18,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerPanelRef = useRef<HTMLDivElement>(null);
   const wasOpenRef = useRef(false);
 
   const whatsappHref = buildGeneralWhatsAppUrl(settings);
@@ -43,6 +44,28 @@ export function Navbar({ settings, ventures }: NavbarProps) {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsDrawerOpen(false);
+        return;
+      }
+
+      if (event.key === "Tab" && drawerPanelRef.current) {
+        const focusable = Array.from(
+          drawerPanelRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        );
+        if (focusable.length === 0) {
+          return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     };
 
@@ -186,7 +209,10 @@ export function Navbar({ settings, ventures }: NavbarProps) {
             onClick={() => setIsDrawerOpen(false)}
           />
 
-          <div className="fixed inset-y-0 right-0 flex w-full max-w-[360px] flex-col bg-bg-canvas">
+          <div
+            ref={drawerPanelRef}
+            className="fixed inset-y-0 right-0 flex w-full max-w-[360px] flex-col bg-bg-canvas"
+          >
             <div className="flex h-[56px] items-center justify-between border-b border-border-hairline px-5">
               <Link
                 href="/"

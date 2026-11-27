@@ -85,7 +85,7 @@ export function PlaceholderMedia({
           aria-hidden="true"
           className="pointer-events-none absolute inset-4 border border-[#fdfbfa]/30 sm:inset-5"
         />
-        <span className="absolute top-7 left-7 type-micro font-medium tracking-[0.02em] text-[#fdfbfa]/90 sm:top-9 sm:left-9">
+        <span className="absolute top-7 left-7 type-micro font-medium tracking-[0.02em] text-ink-primary sm:top-9 sm:left-9">
           {label}
         </span>
       </div>
