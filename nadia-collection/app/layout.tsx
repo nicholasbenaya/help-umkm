@@ -94,6 +94,7 @@ export default async function RootLayout({
   return (
     <html
       lang="id"
+      suppressHydrationWarning
       className={`${cormorantGaramond.variable} ${plusJakartaSans.variable}`}
     >
       <body className="flex min-h-screen flex-col antialiased">
