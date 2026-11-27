@@ -5,8 +5,8 @@
 | **Project Name** | Nadia Collection (Personal Brand & Multi-Venture Showcase) |
 | **Workspace Path** | `nadia-collection/` (inside monorepo `help-umkm`) |
 | **Legacy Archive** | `archive/nadia-studio-v1/` (read-only reference, do not reuse architecture) |
-| **Document Status** | `v1.1: PRD & DESIGN.md Ready (Pending Phase 1 Figma Designs & Client Option Approval)` |
-| **Selected Layout Option** | `PENDING` *(Client to choose **Option 1** or **Option 2** after Phase 1 Figma designs)* |
+| **Document Status** | `v1.2: Option 2 APPROVED (Phase 1 Decision Gate Passed, Phase 3 Unlocked)` |
+| **Selected Layout Option** | **APPROVED: Option 2 (Personal Hub `/` + Dedicated Venture Detail Pages `/ventures/[slug]`)** *([Figma Design File](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo))* |
 | **Target Monthly Cost** | **Rp 0 / bulan** (Vercel Free Tier + Sanity CMS Free Tier) |
 
 ---
@@ -117,9 +117,9 @@ Before Web Dev agents write frontend UI code (Phase 3), the **Design Agent** wil
 - **Trade-off:** Requires one extra dynamic route template (`/ventures/[slug]`) compared to Option 1.
 
 ### Decision Gate Checklist
-- [ ] Reference websites collected from user & `nadia-collection/DESIGN.md` generated.
-- [ ] Figma frames completed for **Option 1** (Desktop + Mobile) and **Option 2** (Desktop + Mobile).
-- [ ] Client (Nadia) selects final option → update **Selected Layout Option** at the top of this PRD and attach Figma link(s) before Phase 3 begins.
+- [x] Reference websites collected from user & `nadia-collection/DESIGN.md` generated.
+- [x] Figma frames completed for **Option 1** (Desktop + Mobile) and **Option 2** (Desktop + Mobile) in [Nadia Collection: Design Exploration](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo).
+- [x] Client (Nadia) selected final option: **APPROVED Option 2 (Personal Hub `/` + `/ventures/[slug]` Detail Pages)**. Approved Figma frames: [Foundations](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=3-16), [Hub Desktop](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-391), [Hub Mobile](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-536), [Afisa Bouquet Detail Desktop](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-600), [Nadia Artistry Detail Desktop](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-799), [Venture Detail Mobile](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-979), and [Lightbox Modal](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo?node-id=5-369). Phase 3 is now unlocked.
 
 ---
 
@@ -194,8 +194,8 @@ All content lives in Sanity CMS (`production` dataset) with TypeScript types mir
 
 ## 9. Open Dependencies & Next Steps
 
-1. **User provides 2–3 reference websites** (plus notes on preferred layout, colors, typography, and vibe) → generate `nadia-collection/DESIGN.md`.
-2. **Design Agent creates Option 1 & Option 2 in Figma** (using Figma Premium access + `DESIGN.md`).
-3. **Client (Nadia) chooses Option 1 or Option 2** → update Decision Gate above.
+1. *(Done)* **User provides 2-3 reference websites** (plus notes on preferred layout, colors, typography, and vibe) -> `nadia-collection/DESIGN.md` generated.
+2. *(Done)* **Design Agent creates Option 1 & Option 2 in Figma** -> [Master Figma File](https://www.figma.com/design/VdcCP5fBMJ5r4ZkipZfPyo) + 3 placeholder SVG logos in `nadia-collection/public/logos/`.
+3. *(Done)* **Client (Nadia) chooses Option 1 or Option 2** -> **APPROVED: Option 2 (Personal Hub `/` + `/ventures/[slug]` Detail Pages)**.
 4. **User creates free Sanity project** (takes ~2 minutes at sanity.io/manage) and provides `NEXT_PUBLIC_SANITY_PROJECT_ID` when entering Phase 2/deploy.
-5. **Web Dev Agents execute Phases 2–4 via JSM HQ** (small PRs, human review & merge).
+5. **Web Dev Agents execute Phases 2-4 via JSM HQ** following Option 2 Figma frames (small PRs, human review & merge).
