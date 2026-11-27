@@ -54,7 +54,20 @@ export const VENTURE_SLUGS_QUERY = groq`*[_type == "venture" && isActive == true
 
 export const SITE_DATA_QUERY = groq`{
   "settings": *[_type == "siteSettings"][0] ${SITE_SETTINGS_PROJECTION},
-  "ventures": *[_type == "venture" && isActive == true] | order(order asc, name asc) ${VENTURE_PROJECTION}
+  "ventures": *[_type == "venture" && isActive == true] | order(order asc, name asc) ${VENTURE_PROJECTION},
+  "totalVentures": count(*[_type == "venture"])
+}`;
+
+const ACTIVE_VENTURES_WITH_META_QUERY = groq`{
+  "ventures": *[_type == "venture" && isActive == true] | order(order asc, name asc) ${VENTURE_PROJECTION},
+  "totalVentures": count(*[_type == "venture"]),
+  "hasSettings": count(*[_type == "siteSettings"]) > 0
+}`;
+
+const VENTURE_SLUGS_WITH_META_QUERY = groq`{
+  "rows": *[_type == "venture" && isActive == true && defined(slug.current)] | order(order asc) { "slug": slug.current },
+  "totalVentures": count(*[_type == "venture"]),
+  "hasSettings": count(*[_type == "siteSettings"]) > 0
 }`;
 
 const SANITY_FETCH_OPTIONS: {
@@ -118,21 +131,24 @@ export async function getSiteData(): Promise<SiteData> {
     const data = await sanityClient.fetch<{
       settings: Partial<SiteSettings> | null;
       ventures: Venture[] | null;
+      totalVentures: number | null;
     }>(SITE_DATA_QUERY, {}, SANITY_FETCH_OPTIONS);
 
     const hasCmsSettings = Boolean(data?.settings);
+    const totalVentures =
+      typeof data?.totalVentures === "number" ? data.totalVentures : 0;
     const cmsVentures = Array.isArray(data?.ventures)
       ? data.ventures.map(normalizeVenture)
       : [];
 
-    if (!hasCmsSettings && cmsVentures.length === 0) {
+    if (!hasCmsSettings && totalVentures === 0) {
       return FALLBACK_SITE_DATA;
     }
 
     return {
       settings: normalizeSiteSettings(data?.settings ?? null),
-      ventures: cmsVentures.length > 0 ? cmsVentures : FALLBACK_VENTURES,
-      isFallback: !hasCmsSettings,
+      ventures: cmsVentures,
+      isFallback: false,
     };
   } catch (error) {
     console.warn("[sanity] Failed to fetch site data, using fallback:", error);
@@ -173,22 +189,28 @@ export async function getActiveVentures(): Promise<Venture[]> {
   }
 
   try {
-    const raw = await sanityClient.fetch<Venture[] | null>(
-      ACTIVE_VENTURES_QUERY,
-      {},
-      {
-        next: {
-          revalidate: 60,
-          tags: ["venture"],
-        },
+    const data = await sanityClient.fetch<{
+      ventures: Venture[] | null;
+      totalVentures: number | null;
+      hasSettings: boolean | null;
+    }>(ACTIVE_VENTURES_WITH_META_QUERY, {}, {
+      next: {
+        revalidate: 60,
+        tags: ["venture", "siteSettings"],
       },
-    );
+    });
 
-    if (!Array.isArray(raw) || raw.length === 0) {
+    const totalVentures =
+      typeof data?.totalVentures === "number" ? data.totalVentures : 0;
+    const hasSettings = Boolean(data?.hasSettings);
+
+    if (!hasSettings && totalVentures === 0) {
       return FALLBACK_VENTURES;
     }
 
-    return raw.map(normalizeVenture);
+    return Array.isArray(data?.ventures)
+      ? data.ventures.map(normalizeVenture)
+      : [];
   } catch (error) {
     console.warn("[sanity] Failed to fetch ventures, using fallback:", error);
     return FALLBACK_VENTURES;
@@ -216,18 +238,28 @@ export async function getVentureBySlug(slug: string): Promise<Venture | null> {
       return normalizeVenture(raw);
     }
 
-    const activeCount = await sanityClient.fetch<number>(
-      groq`count(*[_type == "venture" && isActive == true])`,
+    const meta = await sanityClient.fetch<{
+      totalVentures: number | null;
+      hasSettings: boolean | null;
+    }>(
+      groq`{
+        "totalVentures": count(*[_type == "venture"]),
+        "hasSettings": count(*[_type == "siteSettings"]) > 0
+      }`,
       {},
       {
         next: {
           revalidate: 60,
-          tags: ["venture"],
+          tags: ["venture", "siteSettings"],
         },
       },
     );
 
-    if (activeCount === 0) {
+    const totalVentures =
+      typeof meta?.totalVentures === "number" ? meta.totalVentures : 0;
+    const hasSettings = Boolean(meta?.hasSettings);
+
+    if (!hasSettings && totalVentures === 0) {
       return FALLBACK_VENTURES.find((venture) => venture.slug === slug) ?? null;
     }
 
@@ -247,22 +279,28 @@ export async function getVentureSlugs(): Promise<string[]> {
   }
 
   try {
-    const rows = await sanityClient.fetch<Array<{ slug: string }> | null>(
-      VENTURE_SLUGS_QUERY,
-      {},
-      {
-        next: {
-          revalidate: 60,
-          tags: ["venture"],
-        },
+    const data = await sanityClient.fetch<{
+      rows: Array<{ slug: string }> | null;
+      totalVentures: number | null;
+      hasSettings: boolean | null;
+    }>(VENTURE_SLUGS_WITH_META_QUERY, {}, {
+      next: {
+        revalidate: 60,
+        tags: ["venture", "siteSettings"],
       },
-    );
+    });
 
-    if (!Array.isArray(rows) || rows.length === 0) {
+    const totalVentures =
+      typeof data?.totalVentures === "number" ? data.totalVentures : 0;
+    const hasSettings = Boolean(data?.hasSettings);
+
+    if (!hasSettings && totalVentures === 0) {
       return FALLBACK_VENTURES.map((venture) => venture.slug);
     }
 
-    return rows.map((row) => row.slug).filter(Boolean);
+    return Array.isArray(data?.rows)
+      ? data.rows.map((row) => row.slug).filter(Boolean)
+      : [];
   } catch (error) {
     console.warn(
       "[sanity] Failed to fetch venture slugs, using fallback:",

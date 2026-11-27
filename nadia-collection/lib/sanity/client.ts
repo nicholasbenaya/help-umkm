@@ -11,7 +11,7 @@ export const sanityClient: SanityClient | null = isSanityConfigured
       projectId,
       dataset,
       apiVersion,
-      useCdn: true,
+      useCdn: false,
     })
   : null;
 
