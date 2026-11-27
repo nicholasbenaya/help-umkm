@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BrandLogo } from "@/components/BrandLogo";
-import { PlaceholderMedia } from "@/components/PlaceholderMedia";
+import { ResilientImage } from "@/components/ResilientImage";
 import {
   ShowcaseGallery,
   VentureInfoAccordion,
 } from "@/components/ShowcaseGallery";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { getMotifForVenture, splitEditorialTitle } from "@/lib/editorial";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 import {
   getSiteData,
@@ -16,6 +16,7 @@ import {
   getVentureSlugs,
 } from "@/lib/sanity/queries";
 import type { Venture } from "@/lib/sanity/types";
+import { sanitizeExternalUrl } from "@/lib/url";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export const dynamicParams = true;
@@ -102,32 +103,6 @@ export async function generateMetadata({
   };
 }
 
-function splitEditorialTitle(name: string): {
-  lead: string;
-  accent: string | null;
-} {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  if (parts.length <= 1) {
-    return { lead: name.trim(), accent: null };
-  }
-  return {
-    lead: parts.slice(0, -1).join(" "),
-    accent: parts[parts.length - 1],
-  };
-}
-
-function getMotifForVenture(venture: Venture): "botanical" | "portrait" {
-  const haystack = `${venture.name} ${venture.category}`.toLowerCase();
-  if (
-    haystack.includes("bouquet") ||
-    haystack.includes("florist") ||
-    haystack.includes("bunga")
-  ) {
-    return "botanical";
-  }
-  return "portrait";
-}
-
 function getVentureWhatsAppLabel(venture: Venture): string {
   const haystack = `${venture.name} ${venture.category}`.toLowerCase();
   if (
@@ -181,7 +156,8 @@ export default async function VentureDetailPage({
     : venture.category;
 
   const otherVentures = ventures.filter((item) => item.slug !== venture.slug);
-  const hasExternalAction = Boolean(venture.externalActionUrl?.trim());
+  const safeInstagramUrl = sanitizeExternalUrl(venture.instagramUrl);
+  const safeExternalActionUrl = sanitizeExternalUrl(venture.externalActionUrl);
 
   return (
     <main className="bg-bg-canvas">
@@ -237,14 +213,14 @@ export default async function VentureDetailPage({
                   className="w-full sm:w-auto"
                 />
 
-                {venture.instagramUrl ? (
+                {safeInstagramUrl ? (
                   <a
-                    href={venture.instagramUrl}
+                    href={safeInstagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex min-h-[44px] items-center gap-1.5 type-meta text-ink-secondary underline decoration-border-hairline underline-offset-4 transition-colors duration-[180ms] ease-out hover:text-accent-rose hover:decoration-accent-rose"
                   >
-                    <span>{getInstagramLabel(venture.instagramUrl)}</span>
+                    <span>{getInstagramLabel(safeInstagramUrl)}</span>
                     <span aria-hidden="true" className="text-[14px]">
                       ↗
                     </span>
@@ -263,22 +239,18 @@ export default async function VentureDetailPage({
             {/* 4:5 Studio-Plate Hero Visual (Above info on mobile, right on desktop) */}
             <div className="order-1 lg:order-2">
               <div className="relative aspect-[4/4.5] w-full overflow-hidden bg-bg-surface lg:aspect-[4/4.45]">
-                {coverUrl ? (
-                  <Image
-                    src={coverUrl}
-                    alt={venture.coverImage?.alt || venture.name}
-                    fill
-                    priority
-                    sizes="(max-width: 1023px) 100vw, 52vw"
-                    className="object-cover"
-                  />
-                ) : (
-                  <PlaceholderMedia
-                    label={`${venture.name} · Foto Utama`}
-                    variant="studio"
-                    motif={motif}
-                  />
-                )}
+                <ResilientImage
+                  src={coverUrl}
+                  alt={venture.coverImage?.alt || venture.name}
+                  priority
+                  sizes="(max-width: 1023px) 100vw, 52vw"
+                  className="object-cover"
+                  placeholder={{
+                    label: `${venture.name} · Foto Utama`,
+                    variant: "studio",
+                    motif,
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -288,8 +260,8 @@ export default async function VentureDetailPage({
       {/* Full Showcase Gallery with Lightbox */}
       <ShowcaseGallery venture={venture} settings={settings} motif={motif} />
 
-      {/* Optional Future External Tool Band (Strictly Hidden When Empty) */}
-      {hasExternalAction && venture.externalActionUrl ? (
+      {/* Optional Future External Tool Band (Strictly Hidden When Empty or Invalid) */}
+      {safeExternalActionUrl ? (
         <section
           aria-label="Layanan tambahan eksternal"
           className="bg-bg-canvas pt-12 pb-2 sm:pt-14"
@@ -305,7 +277,7 @@ export default async function VentureDetailPage({
                 </p>
               </div>
               <a
-                href={venture.externalActionUrl}
+                href={safeExternalActionUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-[44px] shrink-0 items-center justify-center gap-1.5 rounded-[2px] border border-border-strong bg-transparent px-6 type-micro uppercase text-ink-primary transition-colors duration-[180ms] ease-out hover:bg-bg-canvas hover:text-accent-rose"

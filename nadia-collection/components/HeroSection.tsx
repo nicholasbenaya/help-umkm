@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 import type { SiteSettings } from "@/lib/sanity/types";
 import { buildGeneralWhatsAppUrl } from "@/lib/whatsapp";
-import { PlaceholderMedia } from "./PlaceholderMedia";
+import { ResilientImage } from "./ResilientImage";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 interface HeroSectionProps {
@@ -60,28 +59,24 @@ export function HeroSection({ settings }: HeroSectionProps) {
         {/* Right Blush Studio Visual Column */}
         <div className="px-5 pb-10 sm:px-8 sm:pb-14 lg:bg-bg-blush-hero lg:p-12 xl:p-[60px]">
           <div className="relative mx-auto aspect-[4/4] w-full max-w-[540px] bg-bg-blush-hero p-4 sm:p-6 lg:aspect-auto lg:h-full lg:min-h-[500px] lg:bg-transparent lg:p-0">
-            {founderPhotoUrl ? (
-              <div className="relative h-full w-full overflow-hidden bg-bg-surface">
-                <Image
-                  src={founderPhotoUrl}
-                  alt={
-                    settings.founderPhoto?.alt ||
-                    `Potret ${settings.founderName}, pendiri ${settings.brandName}`
-                  }
-                  fill
-                  priority
-                  sizes="(max-width: 1023px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-            ) : (
-              <PlaceholderMedia
-                label={`${settings.founderName} · Potret Pendiri`}
-                variant="studio"
-                motif="portrait"
-                className="h-full min-h-[300px] w-full lg:min-h-[480px]"
+            <div className="relative h-full min-h-[300px] w-full overflow-hidden bg-bg-surface lg:min-h-[480px]">
+              <ResilientImage
+                src={founderPhotoUrl}
+                alt={
+                  settings.founderPhoto?.alt ||
+                  `Potret ${settings.founderName}, pendiri ${settings.brandName}`
+                }
+                priority
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className="object-cover"
+                placeholder={{
+                  label: `${settings.founderName} · Potret Pendiri`,
+                  variant: "studio",
+                  motif: "portrait",
+                  className: "h-full min-h-[300px] w-full lg:min-h-[480px]",
+                }}
               />
-            )}
+            </div>
           </div>
         </div>
       </div>

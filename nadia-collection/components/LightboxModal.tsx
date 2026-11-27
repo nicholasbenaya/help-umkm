@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
+import type { EditorialMotif } from "@/lib/editorial";
 import type { SiteSettings, Venture } from "@/lib/sanity/types";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
-import { PlaceholderMedia } from "./PlaceholderMedia";
+import { ResilientImage } from "./ResilientImage";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 export interface LightboxGalleryItem {
   id: string;
+  thumbUrl: string | null;
   imageUrl: string | null;
   alt: string;
   caption: string;
@@ -20,7 +21,7 @@ interface LightboxModalProps {
   activeIndex: number | null;
   venture: Venture;
   settings: SiteSettings;
-  motif: "botanical" | "portrait";
+  motif: EditorialMotif;
   onClose: () => void;
   onNavigate: (nextIndex: number) => void;
 }
@@ -180,22 +181,18 @@ export function LightboxModal({
 
         {/* Full-Resolution Preview Frame */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg-surface sm:aspect-[16/10]">
-          {activeItem.imageUrl ? (
-            <Image
-              src={activeItem.imageUrl}
-              alt={activeItem.alt}
-              fill
-              sizes="(max-width: 896px) 100vw, 776px"
-              className="object-contain"
-              priority
-            />
-          ) : (
-            <PlaceholderMedia
-              label={`${activeItem.caption} · Pratinjau Foto`}
-              variant="studio"
-              motif={motif}
-            />
-          )}
+          <ResilientImage
+            src={activeItem.imageUrl ?? activeItem.thumbUrl}
+            alt={activeItem.alt}
+            sizes="(max-width: 896px) 100vw, 776px"
+            className="object-contain"
+            priority
+            placeholder={{
+              label: `${activeItem.caption} · Pratinjau Foto`,
+              variant: "studio",
+              motif,
+            }}
+          />
 
           {total > 1 ? (
             <>

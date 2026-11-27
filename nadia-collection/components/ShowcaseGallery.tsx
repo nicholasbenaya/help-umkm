@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import type { EditorialMotif } from "@/lib/editorial";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 import type { SiteSettings, Venture } from "@/lib/sanity/types";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { type LightboxGalleryItem, LightboxModal } from "./LightboxModal";
 import { PlaceholderMedia } from "./PlaceholderMedia";
+import { ResilientImage } from "./ResilientImage";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 interface VentureInfoAccordionProps {
@@ -146,7 +147,7 @@ export function VentureInfoAccordion({
 interface ShowcaseGalleryProps {
   venture: Venture;
   settings: SiteSettings;
-  motif: "botanical" | "portrait";
+  motif: EditorialMotif;
 }
 
 export function ShowcaseGallery({
@@ -155,7 +156,6 @@ export function ShowcaseGallery({
   motif,
 }: ShowcaseGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const galleryItems: LightboxGalleryItem[] = venture.gallery.map(
     (item, index) => {
@@ -172,8 +172,10 @@ export function ShowcaseGallery({
 
       return {
         id,
-        imageUrl: failedImages[id] ? null : (fullUrl ?? thumbUrl),
-        alt: item.image?.alt || item.caption || `${venture.name} karya ${index + 1}`,
+        thumbUrl,
+        imageUrl: fullUrl ?? thumbUrl,
+        alt:
+          item.image?.alt || item.caption || `${venture.name} karya ${index + 1}`,
         caption: item.caption || item.tag || `${venture.name} #${index + 1}`,
         tag: item.tag,
       };
@@ -214,27 +216,17 @@ export function ShowcaseGallery({
                 className="group flex flex-col text-left"
               >
                 <div className="relative aspect-[4/4.65] w-full overflow-hidden bg-bg-canvas">
-                  {item.imageUrl ? (
-                    <Image
-                      src={item.imageUrl}
-                      alt={item.alt}
-                      fill
-                      sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
-                      className="object-cover transition-transform duration-[400ms] ease-[var(--ease-editorial)] group-hover:scale-[1.03]"
-                      onError={() =>
-                        setFailedImages((prev) => ({
-                          ...prev,
-                          [item.id]: true,
-                        }))
-                      }
-                    />
-                  ) : (
-                    <PlaceholderMedia
-                      label={`${venture.name} · Foto Segera Hadir`}
-                      variant="canvas"
-                      motif={motif}
-                    />
-                  )}
+                  <ResilientImage
+                    src={item.thumbUrl ?? item.imageUrl}
+                    alt={item.alt}
+                    sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
+                    className="object-cover transition-transform duration-[400ms] ease-[var(--ease-editorial)] group-hover:scale-[1.03]"
+                    placeholder={{
+                      label: `${venture.name} · Foto Segera Hadir`,
+                      variant: "canvas",
+                      motif,
+                    }}
+                  />
                 </div>
 
                 <span className="mt-2.5 text-sm font-medium text-ink-primary transition-colors duration-[180ms] ease-out group-hover:text-accent-rose">
