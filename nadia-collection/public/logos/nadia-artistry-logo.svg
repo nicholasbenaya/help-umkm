@@ -1,0 +1,12 @@
+<svg width="224" height="44" viewBox="0 0 224 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nadia Artistry">
+  <title>Nadia Artistry</title>
+  <!-- Minimalist editorial arch & brush stroke mark -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 35V20C8 13.9249 12.9249 9 19 9C25.0751 9 30 13.9249 30 20V35" stroke="#1F171A" stroke-width="1.2" />
+    <line x1="6" y1="35" x2="32" y2="35" stroke="#1F171A" stroke-width="1.15" />
+    <path d="M13 28.5C16.2 21.5 21.6 17.4 26.5 16.5C25.1 21.8 21 26.4 13 28.5Z" stroke="#9E3B5A" stroke-width="1.25" />
+  </g>
+  <!-- Wordmark -->
+  <text x="44" y="29" fill="#1F171A" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="25" font-weight="600" letter-spacing="0.02em">Nadia</text>
+  <text x="112" y="29" fill="#9E3B5A" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="25" font-style="italic" font-weight="500" letter-spacing="0.01em">Artistry</text>
+</svg>
