@@ -90,11 +90,14 @@ export const ventureType = defineType({
       description:
         "Opsional. Hanya diisi jika usaha ini memakai nomor admin berbeda dari default Site Settings (angka saja, misalnya 6282154309113).",
       validation: (rule) =>
-        rule
-          .regex(/^\d{8,15}$/, {
-            name: "digits-only phone number",
-          })
-          .error("Gunakan angka saja dengan kode negara, misalnya 6282154309113."),
+        rule.custom((value) => {
+          if (typeof value !== "string" || !value.trim()) {
+            return true;
+          }
+          return /^\d{8,15}$/.test(value.trim())
+            ? true
+            : "Gunakan angka saja dengan kode negara, misalnya 6282154309113.";
+        }),
     }),
     defineField({
       name: "whatsappMessageTemplate",

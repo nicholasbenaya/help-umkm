@@ -33,6 +33,9 @@ export function getSanityImageUrl(
   if (options?.height) {
     builder = builder.height(options.height);
   }
+  if (options?.width && options?.height) {
+    builder = builder.fit("crop");
+  }
   if (options?.quality) {
     builder = builder.quality(options.quality);
   }
