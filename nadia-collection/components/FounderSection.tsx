@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 import type { SiteSettings } from "@/lib/sanity/types";
-import { PlaceholderMedia } from "./PlaceholderMedia";
+import { sanitizeExternalUrl } from "@/lib/url";
+import { ResilientImage } from "./ResilientImage";
 
 interface FounderSectionProps {
   settings: SiteSettings;
@@ -13,6 +13,7 @@ export function FounderSection({ settings }: FounderSectionProps) {
     quality: 86,
   });
   const primarySocial = settings.socialLinks[0] ?? null;
+  const safePrimarySocialUrl = sanitizeExternalUrl(primarySocial?.url);
 
   return (
     <section
@@ -23,24 +24,20 @@ export function FounderSection({ settings }: FounderSectionProps) {
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,440px)_1fr] lg:gap-16">
           {/* Staggered Founder Visual */}
           <div className="relative aspect-[4/4.3] w-full max-w-[460px] overflow-hidden bg-bg-blush-hero">
-            {founderPhotoUrl ? (
-              <Image
-                src={founderPhotoUrl}
-                alt={
-                  settings.founderPhoto?.alt ||
-                  `${settings.founderName}, pendiri ${settings.brandName}`
-                }
-                fill
-                sizes="(max-width: 1023px) 100vw, 440px"
-                className="object-cover"
-              />
-            ) : (
-              <PlaceholderMedia
-                label={`${settings.founderName} · Cerita Pendiri`}
-                variant="blush"
-                motif="portrait"
-              />
-            )}
+            <ResilientImage
+              src={founderPhotoUrl}
+              alt={
+                settings.founderPhoto?.alt ||
+                `${settings.founderName}, pendiri ${settings.brandName}`
+              }
+              sizes="(max-width: 1023px) 100vw, 440px"
+              className="object-cover"
+              placeholder={{
+                label: `${settings.founderName} · Cerita Pendiri`,
+                variant: "blush",
+                motif: "portrait",
+              }}
+            />
           </div>
 
           {/* Editorial Statement & Bio */}
@@ -62,9 +59,9 @@ export function FounderSection({ settings }: FounderSectionProps) {
               {settings.founderBio}
             </p>
 
-            {primarySocial ? (
+            {primarySocial && safePrimarySocialUrl ? (
               <a
-                href={primarySocial.url}
+                href={safePrimarySocialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-[44px] items-center gap-1.5 type-meta font-semibold text-ink-primary underline decoration-border-strong underline-offset-4 transition-colors duration-[180ms] ease-out hover:text-accent-rose hover:decoration-accent-rose"

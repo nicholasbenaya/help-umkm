@@ -1,40 +1,18 @@
-import Image from "next/image";
 import Link from "next/link";
+import {
+  type EditorialMotif,
+  getMotifForVenture,
+  splitEditorialTitle,
+} from "@/lib/editorial";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 import type { SanityImage, SiteSettings, Venture } from "@/lib/sanity/types";
 import { buildGeneralWhatsAppUrl, buildWhatsAppUrl } from "@/lib/whatsapp";
-import { PlaceholderMedia } from "./PlaceholderMedia";
+import { ResilientImage } from "./ResilientImage";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 interface VenturesShowcaseProps {
   settings: SiteSettings;
   ventures: Venture[];
-}
-
-function splitEditorialTitle(name: string): {
-  lead: string;
-  accent: string | null;
-} {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  if (parts.length <= 1) {
-    return { lead: name.trim(), accent: null };
-  }
-  return {
-    lead: parts.slice(0, -1).join(" "),
-    accent: parts[parts.length - 1],
-  };
-}
-
-function getMotifForVenture(venture: Venture): "botanical" | "portrait" {
-  const haystack = `${venture.name} ${venture.category}`.toLowerCase();
-  if (
-    haystack.includes("bouquet") ||
-    haystack.includes("florist") ||
-    haystack.includes("bunga")
-  ) {
-    return "botanical";
-  }
-  return "portrait";
 }
 
 /**
@@ -110,21 +88,17 @@ export function VenturesShowcase({
             >
               {/* Background Cover or Dignified Editorial Plate */}
               <div className="absolute inset-0">
-                {coverUrl ? (
-                  <Image
-                    src={coverUrl}
-                    alt={venture.coverImage?.alt || venture.name}
-                    fill
-                    sizes="(max-width: 639px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-[400ms] ease-[var(--ease-editorial)] group-hover:scale-[1.03]"
-                  />
-                ) : (
-                  <PlaceholderMedia
-                    label={`${venture.name} · Foto Segera Hadir`}
-                    variant={index % 2 === 0 ? "cover" : "cover-alt"}
-                    motif="none"
-                  />
-                )}
+                <ResilientImage
+                  src={coverUrl}
+                  alt={venture.coverImage?.alt || venture.name}
+                  sizes="(max-width: 639px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-[400ms] ease-[var(--ease-editorial)] group-hover:scale-[1.03]"
+                  placeholder={{
+                    label: `${venture.name} · Foto Segera Hadir`,
+                    variant: index % 2 === 0 ? "cover" : "cover-alt",
+                    motif: "none",
+                  }}
+                />
               </div>
 
               {/* Functional Bottom Scrim for >= 4.5:1 Text Contrast */}
@@ -191,7 +165,7 @@ interface HighlightCardItem {
   ventureName: string;
   ventureSlug: string;
   image?: SanityImage | null;
-  motif: "botanical" | "portrait";
+  motif: EditorialMotif;
 }
 
 function buildCuratedHighlightItems(ventures: Venture[]): HighlightCardItem[] {
@@ -302,21 +276,17 @@ export function CuratedHighlightsStrip({
                 className="group flex flex-col"
               >
                 <div className="relative aspect-[4/4.8] w-full overflow-hidden bg-bg-surface">
-                  {imageUrl ? (
-                    <Image
-                      src={imageUrl}
-                      alt={item.image?.alt || item.title}
-                      fill
-                      sizes="(max-width: 1023px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-[400ms] ease-[var(--ease-editorial)] group-hover:scale-[1.03]"
-                    />
-                  ) : (
-                    <PlaceholderMedia
-                      label={`${item.ventureName} · Foto Segera Hadir`}
-                      variant="studio"
-                      motif={item.motif}
-                    />
-                  )}
+                  <ResilientImage
+                    src={imageUrl}
+                    alt={item.image?.alt || item.title}
+                    sizes="(max-width: 1023px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-[400ms] ease-[var(--ease-editorial)] group-hover:scale-[1.03]"
+                    placeholder={{
+                      label: `${item.ventureName} · Foto Segera Hadir`,
+                      variant: "studio",
+                      motif: item.motif,
+                    }}
+                  />
                 </div>
 
                 <div className="mt-2.5 flex flex-col gap-0.5">
