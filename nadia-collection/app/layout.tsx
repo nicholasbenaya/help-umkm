@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 import { getSiteData, getSiteSettings } from "@/lib/sanity/queries";
+import { getMetadataBase } from "@/lib/site-url";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -21,22 +22,6 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-function resolveMetadataBase(): URL {
-  const raw =
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : "") ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
-    "https://nadia-collection.vercel.app";
-
-  try {
-    return new URL(raw);
-  } catch {
-    return new URL("https://nadia-collection.vercel.app");
-  }
-}
-
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   const title =
@@ -50,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 
   return {
-    metadataBase: resolveMetadataBase(),
+    metadataBase: getMetadataBase(),
     title: {
       default: title,
       template: `%s | ${settings.brandName}`,
@@ -90,6 +75,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { settings, ventures } = await getSiteData();
+  const currentYear = new Date().getFullYear();
 
   return (
     <html
@@ -102,7 +88,11 @@ export default async function RootLayout({
         <div id="main-content" className="flex-1">
           {children}
         </div>
-        <Footer settings={settings} ventures={ventures} />
+        <Footer
+          settings={settings}
+          ventures={ventures}
+          currentYear={currentYear}
+        />
       </body>
     </html>
   );

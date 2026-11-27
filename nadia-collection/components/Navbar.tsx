@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { SiteSettings, Venture } from "@/lib/sanity/types";
+import { sanitizeExternalUrl } from "@/lib/url";
 import { buildGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { BrandLogo } from "./BrandLogo";
 import { WhatsAppButton } from "./WhatsAppButton";
@@ -14,28 +15,34 @@ interface NavbarProps {
 }
 
 export function Navbar({ settings, ventures }: NavbarProps) {
-  const pathname = usePathname();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const pathname = usePathname() ?? "";
+  // Store the pathname on which the drawer was opened so any route change auto-closes cleanly
+  const [openedPathname, setOpenedPathname] = useState<string | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const drawerPanelRef = useRef<HTMLDivElement>(null);
-  const wasOpenRef = useRef(false);
+  const lastOpenedPathRef = useRef<string | null>(null);
 
+  const isDrawerOpen = openedPathname !== null && openedPathname === pathname;
   const whatsappHref = buildGeneralWhatsAppUrl(settings);
 
   // Hide public site chrome on Embedded Sanity Studio routes
-  const isStudioRoute = pathname?.startsWith("/studio");
+  const isStudioRoute = pathname.startsWith("/studio");
 
   useEffect(() => {
     if (!isDrawerOpen) {
-      if (wasOpenRef.current) {
+      // Restore focus to Menu trigger only when closed on the same route (Esc / Close button)
+      if (
+        lastOpenedPathRef.current !== null &&
+        lastOpenedPathRef.current === pathname
+      ) {
         menuButtonRef.current?.focus();
       }
-      wasOpenRef.current = false;
+      lastOpenedPathRef.current = null;
       return;
     }
 
-    wasOpenRef.current = true;
+    lastOpenedPathRef.current = pathname;
     closeButtonRef.current?.focus();
 
     const previousOverflow = document.body.style.overflow;
@@ -43,7 +50,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsDrawerOpen(false);
+        setOpenedPathname(null);
         return;
       }
 
@@ -74,7 +81,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isDrawerOpen]);
+  }, [isDrawerOpen, pathname]);
 
   if (isStudioRoute) {
     return null;
@@ -89,11 +96,21 @@ export function Navbar({ settings, ventures }: NavbarProps) {
     })),
   ];
 
+  const validSocialLinks = settings.socialLinks
+    .map((social) => ({
+      ...social,
+      safeUrl: sanitizeExternalUrl(social.url),
+    }))
+    .filter(
+      (social): social is typeof social & { safeUrl: string } =>
+        Boolean(social.safeUrl),
+    );
+
   const isActiveLink = (href: string) => {
     if (href === "/") {
       return pathname === "/";
     }
-    return pathname === href || pathname?.startsWith(`${href}/`);
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   return (
@@ -106,11 +123,11 @@ export function Navbar({ settings, ventures }: NavbarProps) {
       </a>
 
       <header className="sticky top-0 z-40 border-b border-border-hairline bg-bg-canvas">
-        <div className="editorial-container flex h-[56px] items-center justify-between gap-4 lg:grid lg:h-[68px] lg:grid-cols-[1fr_auto_1fr] lg:items-center">
-          {/* Desktop Left Navigation */}
+        <div className="editorial-container flex h-[56px] items-center justify-between gap-4 lg:grid lg:h-[68px] lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-6">
+          {/* Desktop Left Navigation (scrolls gracefully without colliding with centered logo for 4+ ventures) */}
           <nav
             aria-label="Navigasi utama"
-            className="hidden items-center gap-7 lg:flex"
+            className="hidden min-w-0 items-center gap-5 overflow-x-auto lg:flex xl:gap-7"
           >
             {navItems.map((item) => {
               const active = isActiveLink(item.href);
@@ -119,7 +136,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`relative inline-flex min-h-[44px] items-center type-meta whitespace-nowrap transition-colors duration-[180ms] ease-out ${
+                  className={`relative inline-flex min-h-[44px] shrink-0 items-center type-meta whitespace-nowrap transition-colors duration-[180ms] ease-out ${
                     active
                       ? "text-accent-rose after:absolute after:right-0 after:bottom-2.5 after:left-0 after:h-[1.5px] after:bg-accent-rose"
                       : "text-ink-primary hover:text-accent-rose"
@@ -132,7 +149,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
           </nav>
 
           {/* Brand Logo (Left on Mobile/Tablet, Centered on Desktop) */}
-          <div className="flex items-center lg:justify-center">
+          <div className="flex shrink-0 items-center lg:justify-center">
             <Link
               href="/"
               aria-label={`${settings.brandName} Beranda`}
@@ -158,7 +175,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center justify-end gap-3">
+          <div className="flex shrink-0 items-center justify-end gap-3">
             <div className="hidden sm:block">
               <WhatsAppButton
                 href={whatsappHref}
@@ -170,7 +187,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
             <button
               ref={menuButtonRef}
               type="button"
-              onClick={() => setIsDrawerOpen(true)}
+              onClick={() => setOpenedPathname(pathname)}
               aria-expanded={isDrawerOpen}
               aria-controls="mobile-nav-drawer"
               className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-[2px] border border-border-strong px-3.5 type-micro uppercase text-ink-primary transition-colors duration-[180ms] ease-out hover:bg-bg-surface hover:text-accent-rose active:bg-bg-surface-strong lg:hidden"
@@ -206,7 +223,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
           <div
             className="fixed inset-0 bg-[#1f171a]/45"
             aria-hidden="true"
-            onClick={() => setIsDrawerOpen(false)}
+            onClick={() => setOpenedPathname(null)}
           />
 
           <div
@@ -216,7 +233,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
             <div className="flex h-[56px] items-center justify-between border-b border-border-hairline px-5">
               <Link
                 href="/"
-                onClick={() => setIsDrawerOpen(false)}
+                onClick={() => setOpenedPathname(null)}
                 className="inline-flex min-h-[44px] items-center"
               >
                 <BrandLogo
@@ -230,7 +247,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
               <button
                 ref={closeButtonRef}
                 type="button"
-                onClick={() => setIsDrawerOpen(false)}
+                onClick={() => setOpenedPathname(null)}
                 className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-[2px] border border-border-strong px-3 type-micro uppercase text-ink-primary transition-colors duration-[180ms] ease-out hover:bg-bg-surface hover:text-accent-rose"
               >
                 <span>Tutup</span>
@@ -261,7 +278,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        onClick={() => setIsDrawerOpen(false)}
+                        onClick={() => setOpenedPathname(null)}
                         aria-current={active ? "page" : undefined}
                         className="flex min-h-[56px] items-center justify-between gap-4 py-3 transition-colors duration-[180ms] ease-out hover:text-accent-rose"
                       >
@@ -291,16 +308,16 @@ export function Navbar({ settings, ventures }: NavbarProps) {
                 })}
               </ul>
 
-              {settings.socialLinks.length > 0 ? (
+              {validSocialLinks.length > 0 ? (
                 <div className="mt-6">
                   <p className="type-micro uppercase text-ink-secondary">
                     Media Sosial
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-3">
-                    {settings.socialLinks.map((social) => (
-                      <li key={social._key || social.url}>
+                    {validSocialLinks.map((social) => (
+                      <li key={social._key || social.safeUrl}>
                         <a
-                          href={social.url}
+                          href={social.safeUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex min-h-[44px] items-center border border-border-hairline bg-bg-surface px-4 type-meta text-ink-primary transition-colors duration-[180ms] ease-out hover:border-border-strong hover:text-accent-rose"
@@ -317,7 +334,7 @@ export function Navbar({ settings, ventures }: NavbarProps) {
             <div className="border-t border-border-hairline bg-bg-surface px-5 pt-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
               <WhatsAppButton
                 href={whatsappHref}
-                label="Hubungi Nadia via WhatsApp"
+                label={`Hubungi ${settings.founderName} via WhatsApp`}
                 variant="primary"
                 fullWidth
               />
