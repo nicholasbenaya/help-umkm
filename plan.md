@@ -29,9 +29,10 @@
 
 > **Goal:** Lock down visual direction (`DESIGN.md`) and design both layout options in Figma so the client can choose **Option 1** or **Option 2** before any frontend UI coding begins.
 
-### `P1-T01` — Generate `DESIGN.md` from Reference Websites
+### `P1-T01` — Generate `DESIGN.md` from Reference Websites *(DONE)*
+- **Status:** Completed (`nadia-collection/DESIGN.md` is committed on `main`, derived from the 3 user-supplied Dribbble references with WCAG AA verified tokens and Option 1 & Option 2 blueprints).
 - **Role:** Designer / Lead (with Human input)
-- **Needs:** none (waits for user to supply 2–3 reference websites via `ask_user` if not yet provided)
+- **Needs:** none
 - **Files:** `nadia-collection/DESIGN.md`
 - **Description:** Translate the user's reference websites and brand direction into a concrete design specification covering color tokens, typography scale, spacing/grid rhythm, component rules, mobile-first breakpoints, placeholder art direction, and anti-patterns.
 - **Done when:** `nadia-collection/DESIGN.md` is committed on `main` and approved by the user.
@@ -135,4 +136,4 @@
 
 When launching JSM HQ (`Local mode` with Antigravity `agy` agents), send this to the Lead Agent:
 
-> Read `ROLE.md`, `nadia-collection/PRD.md`, and `plan.md`. Create boards for `Phase 1 — Design` (active) and `Phase 2 — Foundation & CMS` (active). Do not start Phase 3 until `P1-T03` is approved. Create the Phase 1 and Phase 2 tasks with their exact file lists and `doneWhen` criteria, then tell me what you need from me first (reference websites for `DESIGN.md` and Figma access).
+> Read `ROLE.md`, `nadia-collection/PRD.md`, `nadia-collection/DESIGN.md`, and `plan.md`. Note that `P1-T01` (`DESIGN.md`) is already done. Create boards for `Phase 1 — Design` (active) and `Phase 2 — Foundation & CMS` (active). Do not start Phase 3 until `P1-T03` is approved by the client. Create the remaining Phase 1 tasks (`P1-T02`, `P1-T03`) and Phase 2 tasks (`P2-T01` to `P2-T03`) with their exact file lists and `doneWhen` criteria, assign `P2-T01` to a developer worker, and assign `P1-T02` to the designer worker once Figma access is ready.

@@ -5,7 +5,7 @@
 | **Project Name** | Nadia Collection (Personal Brand & Multi-Venture Showcase) |
 | **Workspace Path** | `nadia-collection/` (inside monorepo `help-umkm`) |
 | **Legacy Archive** | `archive/nadia-studio-v1/` (read-only reference, do not reuse architecture) |
-| **Document Status** | `v1.0 — Planning Ready (Pending Reference Websites for DESIGN.md & Figma Decision Gate)` |
+| **Document Status** | `v1.1: PRD & DESIGN.md Ready (Pending Phase 1 Figma Designs & Client Option Approval)` |
 | **Selected Layout Option** | `PENDING` *(Client to choose **Option 1** or **Option 2** after Phase 1 Figma designs)* |
 | **Target Monthly Cost** | **Rp 0 / bulan** (Vercel Free Tier + Sanity CMS Free Tier) |
 
